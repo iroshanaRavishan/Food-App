@@ -31,9 +31,10 @@
     font-size: 14px;
     font-weight: 600;
     border-radius: 8px;
+    cursor: pointer;
 }
 
-.buttonCOntainer {
+.buttonContainer {
     margin-bottom: 20px;
     display: flex;
     justify-content: space-around;
