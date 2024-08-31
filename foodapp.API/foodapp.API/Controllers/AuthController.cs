@@ -83,5 +83,50 @@ namespace foodapp.API.Controllers
             }
             return Ok(new { message = message });
         }
+
+        [HttpGet("logout"), Authorize]
+        public async Task<IActionResult> LogoutUser()
+        {
+            string message = "Successfully Logged out!";
+
+            try
+            {
+                await signInManager.SignOutAsync();
+            } catch (Exception ex)
+            {
+                return BadRequest("Something went wrong! " + ex.Message);
+            }
+
+            return Ok(new { message = message});
+        }
+
+        [HttpGet("Auth"), Authorize]
+        public async Task<IActionResult> CheckUser()
+        {
+            string message = "Logged In";
+            User CurrentUser = new();
+
+            try
+            {
+                var user_ = HttpContext.User;
+                var principals = new ClaimsPrincipal(user_);
+                var results = signInManager.IsSignedIn(principals);
+
+                if (results)
+                {
+                    CurrentUser = await signInManager.UserManager.GetUserAsync(principals);
+                } else
+                {
+                    return BadRequest("Access Denied!");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong! Plase try again. " + ex.Message);
+            }
+
+            return Ok(new { message = message, user = CurrentUser });
+        }
+
     }
 }
