@@ -10,7 +10,7 @@ export default function({foodData, setFoodData}) {
         async function fetchFood(){
             const res = await fetch(`${URL}?query=${query}&apiKey=${API_KEY}`);
             const data = await res.json()
-            console.log("The Response: ", data.results);
+            // console.log("The Response: ", data.results);
             setFoodData(data.results);
 
         }
