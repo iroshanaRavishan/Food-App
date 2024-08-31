@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "elBTa/kfuNUv4yP6j7tWaXizHM/s4BHPPOjJfb/rI+nTlvVBBcT1kCoBVmlW45dI8qT7eSJYy8vWFMchnql7xQ==",
+  "success": true,
+  "projectFilePath": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\foodapp.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\IroshanaRavi_nt4czoz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\IroshanaRavi_nt4czoz\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\IroshanaRavi_nt4czoz\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
+    "C:\\Users\\IroshanaRavi_nt4czoz\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
+    "C:\\Users\\IroshanaRavi_nt4czoz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
+    "C:\\Users\\IroshanaRavi_nt4czoz\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
+  ],
+  "logs": []
+}
