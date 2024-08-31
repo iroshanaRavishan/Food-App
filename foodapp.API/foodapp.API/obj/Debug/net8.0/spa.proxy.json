@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "",
+"RedirectUrl": "",
+"LaunchCommand": "",
+"WorkingDirectory": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}
