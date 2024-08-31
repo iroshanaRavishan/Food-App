@@ -51,5 +51,37 @@ namespace foodapp.API.Controllers
             return Ok(new { message = message, result = result });
         }
 
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginUser(Login login)
+        {
+            string message = "";
+
+            try
+            {
+                User user_ = await userManager.FindByIdAsync(login.Email);
+
+                if(user_ != null && !user_.EmailConfirmed)
+                {
+                    user_.EmailConfirmed = true;
+                }
+
+                var result = await signInManager.PasswordSignInAsync(user_, login.Password, login.Remember, false);
+
+                if (!result.Succeeded)
+                {
+                    return Unauthorized("Check your login credentials and try again");
+                }
+                
+                user_.LastLogin = DateTime.UtcNow;
+                var updatedUser = await userManager.UpdateAsync(user_);
+                message = "Login Successfull!";
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Something went wrong, Please try again. " + ex.Message);
+            }
+            return Ok(new { message = message });
+        }
     }
 }
