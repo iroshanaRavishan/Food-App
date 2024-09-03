@@ -38,7 +38,7 @@ export default function FoodDetails({foodId}){
                 <h2>Instructions</h2>
                 <div className={styles.recipeinstructions}>
                     <ol>
-                        {isLoading ? (<p>Loading...</p>) : (food.analyzedInstructions[0].steps.map((steps)=>( <li>{steps.step}</li>)))}
+                        {isLoading ? (<p>Loading...</p>) : (food.analyzedInstructions[0].steps.map((steps, index)=>( <li key={index}>{steps.step}</li>)))}
                     </ol>
                 </div>
             </div>
