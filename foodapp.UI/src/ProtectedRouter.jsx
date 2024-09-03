@@ -7,22 +7,26 @@ export default function ProtectedRouter() {
     const [waiting, setWaiting] = useState(true);
 
     useEffect(()=>{
-        fetch("api/Auth/Auth", {
+        fetch("https://localhost:7181/api/Auth/authuser", {
             method: "GET",
-            credentials: 'include'
-        }).then(response => response.json).then(data=> {
-            setIsLogged(true)
-            setWaiting(false)
-            localStorage.setItem('user', data.user.email)
+            credentials: "include", // Include cookies in cross-origin requests
+        }).then(response => {
+            if (response.ok) {
+                setIsLogged(true)
+                setWaiting(false)
+            }
+            return response.json();
+        }).then(data=> {
+            localStorage.setItem("user", data.user.email)
             console.log(data.user)
-        }).catch(error=> {
-            console.log(error);
+        }).catch(err=> {
+            console.log("Error protected routes: ", err);
             setWaiting(false);
-            localStorage.removeItem('user');
+            localStorage.removeItem("user");
         })
     },[])
 
-  return ( waiting ? <div className='waitingPage'>
+  return ( waiting ? <div className="waitingPage">
     <div>Waiting...</div>
   </div>:
   isLogged ? <Outlet /> : <Navigate to="/login" />
