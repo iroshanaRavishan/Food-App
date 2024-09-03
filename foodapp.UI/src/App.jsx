@@ -1,13 +1,14 @@
 import { useState } from "react"
 import Nav from "./components/Nav"
-import Search from './components/Search'
 import "./app.css"
 
-import { Route, Router, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, createBrowserRouter, createRoutesFromElements, RouterProvider  } from 'react-router-dom';
+
 import ProtectedRouter from "./ProtectedRouter"
 import UserRegister from "./components/UserRegister"
 import UserLogin from "./components/UserLogin"
 import Home from "./components/Home"
+import Admin from "./components/Admin";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
@@ -15,21 +16,25 @@ function App() {
 
   const router = createBrowserRouter (
     createRoutesFromElements(
-      <Route path="/">
-        <Route element={ProtectedRouter}>
-          <Route path="/" element={ <Search /> } />
-          <Route path="/" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
-          {/* put the path to protect the routing */}
+      <Route>
+        {/* Protected route wrapper for authentication */}
+        <Route element={ <ProtectedRouter /> }>
+          <Route path="/home" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
+          <Route path="/admin" element={<Admin/>} />
         </Route>
+
+        {/* Public routes */}
         <Route path="/login" element={ <UserLogin /> } />
         <Route path="/register" element={ <UserRegister /> } />
+
+        {/* Fallback for undefined routes */}
         <Route path="*" element={
           <div>
             <header>
-              <h1>Not Found!</h1> 
+              <h1>Path is Not Found!</h1> 
             </header>
             <p>
-              <a href="/">Back to Home</a>
+              <a href="/login">Back to Home</a>
             </p>
           </div>
         } />
@@ -37,11 +42,11 @@ function App() {
     )
   )
 
-  const isLogged = localStorage.getItem("user");
-  
   return (
     <div className="App">
-      <Nav isLogged={isLogged}/>
+      {/* Rendering the router using RouterProvider */}
+      <Nav />
+      <RouterProvider router={router} />
     </div>
   )
 }
