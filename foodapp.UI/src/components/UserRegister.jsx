@@ -1,19 +1,20 @@
 import React, { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function UserRegister() {
-  
+const navigate = useNavigate(); // Hook to programmatically navigate
+
   // here, it does not ask an already logged in user to the register over and over again
   useEffect(()=>{
-    const user = localStorage.getItem('user');
+    const user = localStorage.getItem("user");
     if(user) {
-      document.location = "/"; // navigating to the home page if the user is there.
+      navigate('/home');   // navigating to the home page if the user is there.
     }
-  },[]);
+  }, []);
 
   async function registerHandler(e){
     e.preventDefault();
     const form_ = e.target, submitter = document.querySelector("input.register");
-
     const formData = new FormData(form_, submitter), dataToSend = {};
 
     for(const [key, value] of formData) {
@@ -21,10 +22,10 @@ export default function UserRegister() {
     }
 
     // creating the user name
-    const newUserName = dataToSend.Name.trim().split("");
+    const newUserName = dataToSend.Name.trim().split(" ");
     dataToSend.UserName = newUserName.join("");
 
-    const response = await fetch("api/Auth/register", {
+    const response = await fetch("https://localhost:7181/api/Auth/register", {
       method: "POST",
       credentials: 'include',
       body: JSON.stringify(dataToSend),
@@ -37,8 +38,7 @@ export default function UserRegister() {
     const data = await response.json();
 
     if(response.ok) {
-      localStorage.setItem("user", dataToSend.Email);
-      document.location = "/login"
+      navigate('/login');
     }
 
     const messageElement = document.querySelector(".message");
@@ -50,13 +50,13 @@ export default function UserRegister() {
       data.errors.forEach(error=> {
         errorMessages += error.description + " "
       })
+
       errorMessages += "</div>"
       messageElement.innerHTML = errorMessages;
     }
 
-    console.log("register error: ", data);
+    console.log("register status: ", data);
   }
-
 
   return (
     <div className='registerPageWrapper page'>
@@ -76,8 +76,11 @@ export default function UserRegister() {
               <input type="password" name="PasswordHash" id="password" required /><br />
 
               <input type="submit" value="Register" className='register btn' />
-
             </form>
+          </div>
+          <div>
+            <span>Or </span>
+            <a href="/login">Login</a>
           </div>
         </div>
     </div>
