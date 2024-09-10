@@ -23,7 +23,7 @@ namespace foodapp.API.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser(User user)
         {
-            string message = "";
+
             IdentityResult result = new();
 
             try
@@ -31,102 +31,122 @@ namespace foodapp.API.Controllers
                 User user_ = new User()
                 {
                     Name = user.Name,
-                    UserName = user.UserName,
                     Email = user.Email,
+                    UserName = user.UserName,
                 };
 
-                result = await userManager.CreateAsync(user_);
+                result = await userManager.CreateAsync(user_, user.PasswordHash);
 
                 if(!result.Succeeded)
                 {
                     return BadRequest(result);
                 }
 
-                message = "Registration Successfull!";
-
             } catch (Exception ex)
             {
-                return BadRequest("Something went wrong, Please try again. " +  ex.Message);
+                return BadRequest(new{message = "Something went wrong, Please try again. " +  ex.Message});
             }
-            return Ok(new { message = message, result = result });
+
+            return Ok(new { message = "Registration Successfull!", result = result });
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser(Login login)
         {
-            string message = "";
-
             try
             {
-                User user_ = await userManager.FindByIdAsync(login.Email);
+                User user_ = await userManager.FindByEmailAsync(login.Email);
 
-                if(user_ != null && !user_.EmailConfirmed)
+                if(user_ != null)
                 {
-                    user_.EmailConfirmed = true;
-                }
+                    login.Username = user_.UserName;
 
-                var result = await signInManager.PasswordSignInAsync(user_, login.Password, login.Remember, false);
+                    if (!user_.EmailConfirmed) 
+                    {
+                        user_.EmailConfirmed = true;    
+                    }
+                    
+                    var result = await signInManager.PasswordSignInAsync(user_, login.Password, login.Remember, false);
 
-                if (!result.Succeeded)
+                    if (!result.Succeeded)
+                    {
+                        return Unauthorized(new {message = "Check your login credentials and try again"});
+                    }
+
+                    user_.LastLogin = DateTime.UtcNow;
+                    var updatedUser = await userManager.UpdateAsync(user_);
+                } else 
                 {
-                    return Unauthorized("Check your login credentials and try again");
+                    return BadRequest(new {message = "Please check your credentials and try again. "});
                 }
-                
-                user_.LastLogin = DateTime.UtcNow;
-                var updatedUser = await userManager.UpdateAsync(user_);
-                message = "Login Successfull!";
-
+               
             }
             catch (Exception ex)
             {
-                return BadRequest("Something went wrong, Please try again. " + ex.Message);
+                return BadRequest(new {message = "Something went wrong, Please try again. " + ex.Message});
             }
-            return Ok(new { message = message });
+
+            return Ok(new { message = "Login Successfull!" });
         }
 
-        [HttpGet("logout"), Authorize]
+        [HttpGet("logout")] // need to apply autherize here, TODO
         public async Task<IActionResult> LogoutUser()
         {
-            string message = "Successfully Logged out!";
-
             try
             {
                 await signInManager.SignOutAsync();
             } catch (Exception ex)
             {
-                return BadRequest("Something went wrong! " + ex.Message);
+                return BadRequest(new{message = "Something went wrong! " + ex.Message});
             }
 
-            return Ok(new { message = message});
+            return Ok(new { message = "Successfully Logged out!"});
         }
 
-        [HttpGet("Auth"), Authorize]
+        [HttpGet("admin")] // need to apply autherize here, TODO
+        public async Task<IActionResult> AdminPage()
+        {
+            string[] partners = { "Doe", "john", "Smith", "Eric" };
+            return Ok(new { trustedPartners = partners });
+        }
+
+        [HttpGet("home/{email}"), Authorize]
+        public async Task<IActionResult> LandingPage(string email)
+        {
+            User user = await userManager.FindByEmailAsync(email);
+            if(user == null)
+            {
+                return BadRequest(new { message = "Something went wrong! PLease try again later." });
+            }
+
+            return Ok(new { user = user});
+        }
+
+        [HttpGet("authuser")]
         public async Task<IActionResult> CheckUser()
         {
-            string message = "Logged In";
-            User CurrentUser = new();
+            User currentUser = new();
 
             try
             {
                 var user_ = HttpContext.User;
                 var principals = new ClaimsPrincipal(user_);
-                var results = signInManager.IsSignedIn(principals);
+                var result = signInManager.IsSignedIn(principals);
 
-                if (results)
+                if (result)
                 {
-                    CurrentUser = await signInManager.UserManager.GetUserAsync(principals);
+                    currentUser = await signInManager.UserManager.GetUserAsync(principals);
                 } else
                 {
-                    return BadRequest("Access Denied!");
+                    return Forbid();
                 }
             }
             catch (Exception ex)
             {
-                return BadRequest("Something went wrong! Plase try again. " + ex.Message);
+                return BadRequest(new{message = "Something went wrong! Plase try again. " + ex.Message});
             }
 
-            return Ok(new { message = message, user = CurrentUser });
+            return Ok(new { message = "Logged In", user = currentUser });
         }
-
     }
 }
