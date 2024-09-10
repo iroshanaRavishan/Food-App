@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,31 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Program.cs",
+              "RelativeDocumentMoniker": "foodapp.API\\Program.cs",
+              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Program.cs",
+              "RelativeToolTip": "foodapp.API\\Program.cs",
+              "ViewState": "AQIAADwAAAAAAAAAAAAAAFsAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-01T10:49:38.383Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\appsettings.json",
-              "RelativeDocumentMoniker": "foodapp.API\\appsettings.json",
-              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\appsettings.json",
-              "RelativeToolTip": "foodapp.API\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-08-31T17:23:20.095Z",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "foodapp.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "foodapp.API\\Controllers\\AuthController.cs",
+              "ViewState": "AQIAAGoAAAAAAAAAAAA0wH4AAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-31T18:23:09.132Z",
               "EditorCaption": ""
             }
           ]
