@@ -27,13 +27,18 @@ export default function UserLogin() {
     });
   }
 
+  function validateEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   async function loginHandler(e){
     e.preventDefault();    
     const validationErrors = {};
     if(!formData.Email.trim()){
       validationErrors.Email = "Email is required!";
-    } else if(/\S+@\S+\.S+/.test(formData.Email)){
-      validationErrors.Email = "Email is not valid!";
+    } else if (!validateEmail(formData.Email)) {
+      validationErrors.Email = 'Email is not valid!';
     }
 
     if(!formData.Password.trim()) {
@@ -86,14 +91,14 @@ export default function UserLogin() {
             <form action="#" className='login' onSubmit={loginHandler}>
 
               <label htmlFor="email">Email</label><br />
-              <input type="email" name="Email" placeholder='example@hello.com' onChange={handleChange} required /><br />
-              {errors.Email && <span>{errors.Email}</span>}<br /><br />
+              <input type="text" name="Email" placeholder='example@hello.com' onChange={handleChange} /><br />
+              {errors.Email && <span>{errors.Email}</span>}<br />
 
               <label htmlFor="password">Password</label><br />
-              <input type="password" name="Password" onChange={handleChange} required /><br />
-              {errors.Password && <span>{errors.Password}</span>}<br /><br />
+              <input type="password" name="Password" placeholder="******" onChange={handleChange} /><br />
+              {errors.Password && <span>{errors.Password}</span>}<br />
 
-              <input type="checkbox" name="Remember" onChange={handleChange} required />
+              <input type="checkbox" name="Remember" onChange={handleChange} />
               <label htmlFor="remember"> Remember Password?</label><br />
 
               <input type="submit" value="Login" className='login btn' />
