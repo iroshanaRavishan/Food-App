@@ -29,3 +29,7 @@ a:active {
     justify-content: space-around;
     align-items: center;
 }
+
+span span {
+    cursor: pointer;
+}
