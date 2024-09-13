@@ -25,8 +25,12 @@ a {
     color: rgb(0, 184, 9);
 }
 
-a:hover {
-    color: rgb(0, 184, 9);
+div span a:hover {
+    color: rgb(5, 148, 12);
+}
+
+div span p:hover {
+    color: rgb(5, 148, 12);
 }
 
 .itemHolder {
