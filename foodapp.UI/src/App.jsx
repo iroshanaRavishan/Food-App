@@ -5,8 +5,7 @@ import "./app.css"
 import { BrowserRouter as Router, Routes, Route, createBrowserRouter, createRoutesFromElements, RouterProvider  } from 'react-router-dom';
 
 import ProtectedRouter from "./ProtectedRouter"
-import UserRegister from "./components/UserRegister"
-import UserLogin from "./components/UserLogin"
+import Auth from "./components/Auth/Auth"
 import Home from "./components/Home"
 import Admin from "./components/Admin";
 
@@ -24,8 +23,7 @@ function App() {
         </Route>
 
         {/* Public routes */}
-        <Route path="/login" element={ <UserLogin /> } />
-        <Route path="/register" element={ <UserRegister /> } />
+        <Route path="/auth" element={ <Auth /> } />
 
         {/* Fallback for undefined routes */}
         <Route path="*" element={
@@ -34,7 +32,7 @@ function App() {
               <h1>Path is Not Found!</h1> 
             </header>
             <p>
-              <a href="/login">Back to Home</a>
+              <a href="/auth">Back to Home</a>
             </p>
           </div>
         } />
