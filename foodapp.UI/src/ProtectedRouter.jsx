@@ -29,6 +29,6 @@ export default function ProtectedRouter() {
   return ( waiting ? <div className="waitingPage">
     <div>Waiting...</div>
   </div>:
-  isLogged ? <Outlet /> : <Navigate to="/login" />
+  isLogged ? <Outlet /> : <Navigate to="/auth" />
   )
 }
