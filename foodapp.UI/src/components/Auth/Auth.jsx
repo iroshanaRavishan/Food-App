@@ -36,9 +36,13 @@ export default function Auth() {
     }
   }, []);
 
-  const handleModelProfileImgData = (data) => {
+  function handleModelProfileImgData(data) {
     setProfileImgData(data);
   };
+
+  function handleCloseSelectedImage () {
+    setProfileImgData("");
+  }
 
   function handleLoginChange(e){
     const {name, value} = e.target;
@@ -229,7 +233,10 @@ export default function Auth() {
 
                 <div className='selecting-profile-pic'>
                   <ProfilePicSelectorModal onDataSend={handleModelProfileImgData}/>
-                  { profileImgData && <img className="profile-picture"  src={profileImgData} alt="select-profile" /> } 
+                  { profileImgData && <div>
+                      <img src='./src/assets/images/cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
+                      <img className="profile-picture"  src={profileImgData} alt="select-profile" /> 
+                    </div>} 
                 </div>
                 <button type="submit" disabled={isLoding}>
                   { isLoding?
