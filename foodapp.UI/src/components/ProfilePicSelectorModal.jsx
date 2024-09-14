@@ -1,12 +1,34 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './profilepicselectormodal.module.css'
 
-export default function ProfilePicSelectorModal({ onDataSend }) {
+export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg, localProfileImg, fileName, setFileName }) {
 
   const [isVisible, setIsVisible] = useState(false);
-  const [profileImg, setProfileImg] = useState("");
-  const [fileName, setFileName] = useState("");
   const modalRef = useRef();
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    fetch(`https://localhost:7181/api/defaultProfilePicture/all-with-data`, {
+        method: "GET",
+        credentials: "include"
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Failed to retrieve images');
+        }
+        return response.json();
+    })
+    .then(data => {
+        const imageList = data.map(image => {
+            const imageUrl = `data:${image.contentType};base64,${image.data}`;
+            return { id: image.id, url: imageUrl };
+        });
+        setImages(imageList);
+    })
+    .catch(err => {
+        console.error("Error fetching images:", err);
+    });
+  }, []);
 
   const handleOpen = () => setIsVisible(true);
   const handleClose = () => setIsVisible(false);
@@ -17,11 +39,19 @@ export default function ProfilePicSelectorModal({ onDataSend }) {
     }
   }
 
-  function sendDataToParent() {
-    const newProfileImg = './src/assets/images/profile.jpg';
-    setProfileImg(newProfileImg);
+  function sendDataToParentFromServer(imageUrl) {
+    const newProfileImg = imageUrl;
     onDataSend(newProfileImg);
+    setLocalProfileImg("");
+    setFileName("")
     handleClose();
+  }
+
+  function sendDataToParentFromLocal() {
+    if (localProfileImg) {
+      onDataSend(localProfileImg);
+      handleClose(); 
+    }
   }
 
   function handleFileUpload(e) {
@@ -29,15 +59,16 @@ export default function ProfilePicSelectorModal({ onDataSend }) {
     if (file) {
       const reader = new FileReader();
       reader.onload = function (loadEvent) {
-        setProfileImg(loadEvent.target.result);
+        const uploadedImage = loadEvent.target.result;
+        setLocalProfileImg(uploadedImage);
       };
       reader.readAsDataURL(file);
       setFileName(file.name);
     }
-  };
+  }
 
   function handleCloseSelectedImage () {
-    setProfileImg("");
+    setLocalProfileImg("");
     setFileName("");
   }
 
@@ -48,31 +79,26 @@ export default function ProfilePicSelectorModal({ onDataSend }) {
               <div className={styles.popupOverlay} ref={modalRef} onClick={closeModal}>
                   <div className={styles.popupContent}>
                       <img src='./src/assets/images/cancel.png' onClick={handleClose} className={styles.closeBtn}/>
-
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-                      <img className="profile-picture" src="./src/assets/images/profile.jpg" alt="profile-avatar" onClick={sendDataToParent}/>
-
+                      
+                      <h3>Select your Avatar</h3>
+                      <div style={{ display: "flex", flexWrap: "wrap" }}>
+                          {images.map(image => (
+                              <div key={image.id} >
+                                  <img src={image.url} alt={`Image ${image.id}`} className='profile-picture' onClick={() => sendDataToParentFromServer(image.url)} />
+                              </div>
+                          ))}
+                      </div>
 
                       <span className={styles.avatarSeparator}>or</span>
 
                       <div className={styles.fileUploader}>
-                        <label htmlFor="fileUpload" className={styles.chooseBtn}> Choose File</label>
+                        <label htmlFor="fileUpload" className={styles.chooseBtn}> Choose Image</label>
                         <input type="file" id="fileUpload" accept="image/*" className={styles.fileInput} onChange={handleFileUpload} />
 
-                        { profileImg ? 
+                        { localProfileImg ? 
                           <div>
-                              <img src='./src/assets/images/cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
-                              <img className="profile-picture" src={profileImg} alt="profile-avatar" />
+                              <img src='./src/assets/images/disabled-cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
+                              <img className="profile-picture" src={localProfileImg} alt="profile-avatar" />
                           </div> : 
                           <div>
                             <img src='./src/assets/images/disabled-cancel.png' className='cancel-profile-picture' />
@@ -85,11 +111,12 @@ export default function ProfilePicSelectorModal({ onDataSend }) {
                           { fileName && <span style={{fontWeight : "700", fontSize: "14px"}}>Want to upload this <br /> image?</span> }<br />
                           <span className={styles.imageName}>{fileName}</span> 
                         </div>
-                        { fileName && <div className={styles.uploadBtn} onClick={sendDataToParent}>
-                          <img src="./src/assets/images/active-upload.png" className={styles.blinkingImage} alt="active-upload"/>
-                          <span>Click to save</span>
-                        </div>
-                        }
+                        {fileName && (
+                          <div className={styles.uploadBtn} onClick={sendDataToParentFromLocal}>
+                            <img src="./src/assets/images/active-upload.png" className={styles.blinkingImage} alt="active-upload" />
+                            <span>Click to save</span>
+                          </div>
+                        )}
                       </div>
                   </div>
               </div>
