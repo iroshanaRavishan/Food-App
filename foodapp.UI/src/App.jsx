@@ -8,6 +8,8 @@ import ProtectedRouter from "./ProtectedRouter"
 import Auth from "./components/Auth/Auth"
 import Home from "./components/Home"
 import Admin from "./components/Admin";
+import Profile from "./components/Profile";
+import { UserProvider } from "./context/UserContext";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
@@ -20,6 +22,7 @@ function App() {
         <Route element={ <ProtectedRouter /> }>
           <Route path="/home" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
           <Route path="/admin" element={<Admin/>} />
+          <Route path="/profile" element={<Profile/>} />      
         </Route>
 
         {/* Public routes */}
@@ -43,8 +46,11 @@ function App() {
   return (
     <div className="App">
       {/* Rendering the router using RouterProvider */}
-      <Nav />
-      <RouterProvider router={router} />
+      <UserProvider > 
+      {/*This (UserProvider) ensure that all routes and components within have access to the user context. */}
+        <Nav />
+        <RouterProvider router={router} />
+      </UserProvider>
     </div>
   )
 }
