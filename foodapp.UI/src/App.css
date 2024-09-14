@@ -5,3 +5,16 @@ body {
     min-height: 100vh;
     justify-content: center; 
 }
+
+.profilePicture {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #fff;
+    transition: all 200ms;
+}
+
+.profilePicture:hover {
+    box-shadow: 1px 1px 4px 0px rgb(0, 0, 0, 0.5);
+}
