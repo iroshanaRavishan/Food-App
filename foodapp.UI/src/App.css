@@ -18,3 +18,18 @@ body {
 .profile-picture:hover {
     box-shadow: 1px 1px 4px 0px rgb(0, 0, 0, 0.5);
 }
+  
+  .cancel-profile-picture {
+    position: absolute;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #fff;
+  }
+  
+  .profile-picture {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
