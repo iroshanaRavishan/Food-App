@@ -12,25 +12,50 @@
 } 
 
 .popupContent {
-    width: 250px;
-    height: 400px;
+    width: 255px;
+    min-height: 200px;
+    max-height: 50vh; 
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #fff;
-    padding: 16px;
+    padding: 30px 16px 16px 16px;
     position: relative;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 500ms;
 }
+
+.popupContent::-webkit-scrollbar {
+    width: 7px;
+}
+
+.popupContent::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+.popupContent::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 4px;
+}
+
+.popupContent::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 
 .closeBtn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 12px;
+    right: 4px;
     border: none;
     background: none;
     font-size: 16px;
     cursor: pointer;
+}
+
+.closeBtn:hover {
+    transform: scale(1.1);
 }
 
 .openBtn {
@@ -38,3 +63,95 @@
     cursor: pointer;
 }
 
+.avatarSeparator {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-weight: 600;
+    color: #8f8f8f;
+    margin-top: 20px;
+}
+  
+.avatarSeparator::before,
+.avatarSeparator::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+    margin: 0 15px;
+}
+  
+.fileUploader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+  
+.chooseBtn {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #4ccf99, #02a747);
+    color: white;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    transition: all 500ms;
+}
+  
+.chooseBtn:hover {
+    background: linear-gradient(to right, #4ccf99, #20b85f);
+}
+  
+.fileInput {
+    display: none;
+}
+  
+.imageUploadingArea {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 15px;
+}
+  
+.uploadBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px dashed #a1a1a1;
+    border-radius: 10px;
+    padding: 3px;
+    cursor: pointer;
+    transition: all 100ms;
+}
+
+.uploadBtn:hover {
+    transform: scale(1.05);
+}
+
+.imageUploadingArea img {
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+}
+  
+.blinkingImage {
+    animation: blink 1s infinite;
+}
+  
+@keyframes blink {
+  0% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1);
+
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
