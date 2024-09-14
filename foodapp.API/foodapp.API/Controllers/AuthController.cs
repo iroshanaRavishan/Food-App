@@ -44,10 +44,10 @@ namespace foodapp.API.Controllers
 
             } catch (Exception ex)
             {
-                return BadRequest(new{message = "Something went wrong, Please try again. " +  ex.Message});
+                return BadRequest(new{message = "Something went wrong, Please try again. " +  ex.Message, isSuccess = false});
             }
 
-            return Ok(new { message = "Registration Successfull!", result = result });
+            return Ok(new { message = "Registration Successfull!", result = result, isSuccess = true });
         }
 
         [HttpPost("login")]
@@ -65,28 +65,29 @@ namespace foodapp.API.Controllers
                     {
                         user_.EmailConfirmed = true;    
                     }
+                    //throw new InvalidOperationException("Simulated exception during password sign-in.");
                     
                     var result = await signInManager.PasswordSignInAsync(user_, login.Password, login.Remember, false);
 
                     if (!result.Succeeded)
                     {
-                        return Unauthorized(new {message = "Check your login credentials and try again"});
+                        return Unauthorized(new {message = "Please check your credentials and try again!", isSuccess = true });
                     }
 
                     user_.LastLogin = DateTime.UtcNow;
                     var updatedUser = await userManager.UpdateAsync(user_);
                 } else 
                 {
-                    return BadRequest(new {message = "Please check your credentials and try again. "});
+                    return BadRequest(new {message = "The Email is not exists. Please check your credentials and try again!", isSuccess = false});
                 }
                
             }
             catch (Exception ex)
             {
-                return BadRequest(new {message = "Something went wrong, Please try again. " + ex.Message});
+                return BadRequest(new {message = "Something went wrong, Please try again! " + ex.Message, isSuccess = false});
             }
 
-            return Ok(new { message = "Login Successfull!" });
+            return Ok(new { message = "Login Successfull!", isSuccess = true });
         }
 
         [HttpGet("logout")] // need to apply autherize here, TODO
@@ -97,17 +98,17 @@ namespace foodapp.API.Controllers
                 await signInManager.SignOutAsync();
             } catch (Exception ex)
             {
-                return BadRequest(new{message = "Something went wrong! " + ex.Message});
+                return BadRequest(new{message = "Something went wrong! " + ex.Message, isSuccess = false});
             }
 
-            return Ok(new { message = "Successfully Logged out!"});
+            return Ok(new { message = "Successfully Logged out!", isSuccess = true});
         }
 
         [HttpGet("admin")] // need to apply autherize here, TODO
         public async Task<IActionResult> AdminPage()
         {
             string[] partners = { "Doe", "john", "Smith", "Eric" };
-            return Ok(new { trustedPartners = partners });
+            return Ok(new { trustedPartners = partners, isSuccess = true});
         }
 
         [HttpGet("home/{email}"), Authorize]
@@ -116,10 +117,10 @@ namespace foodapp.API.Controllers
             User user = await userManager.FindByEmailAsync(email);
             if(user == null)
             {
-                return BadRequest(new { message = "Something went wrong! PLease try again later." });
+                return BadRequest(new { message = "Something went wrong! PLease try again later." , isSuccess = false});
             }
 
-            return Ok(new { user = user});
+            return Ok(new { user = user, isSuccess = true });
         }
 
         [HttpGet("authuser")]
@@ -143,10 +144,10 @@ namespace foodapp.API.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new{message = "Something went wrong! Plase try again. " + ex.Message});
+                return BadRequest(new{message = "Something went wrong! Plase try again. " + ex.Message, isSuccess = false });
             }
 
-            return Ok(new { message = "Logged In", user = currentUser });
+            return Ok(new { message = "Logged In", user = currentUser, isSuccess = true});
         }
     }
 }
