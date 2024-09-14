@@ -23,6 +23,8 @@ export default function Auth() {
   const [isLoding, setIsLoading] = useState(false);
   const [formActive, setFormActive] = useState(false);
   const [profileImgData, setProfileImgData] = useState("");
+  const [localProfileImg, setLocalProfileImg] = useState("");
+  const [fileName, setFileName] = useState("");
 
   const validationErrors = {};
   const loginMessageElement = document.querySelector(".login-message");
@@ -41,7 +43,9 @@ export default function Auth() {
   };
 
   function handleCloseSelectedImage () {
+    setLocalProfileImg("")
     setProfileImgData("");
+    setFileName("");
   }
 
   function handleLoginChange(e){
@@ -113,7 +117,7 @@ export default function Auth() {
       }
 
       if(data.message) {
-        let errorMessages = "<div><h3>Attention:</h3></div> <ul>";
+        let errorMessages = "<div><span style='font-size: 15px;'>Attention:</span></div> <ul>";
         errorMessages += "<li>" + data.message + "</li></ul>";
         loginMessageElement.innerHTML = errorMessages;
       }
@@ -180,7 +184,7 @@ export default function Auth() {
       }
 
       if(!data.message) {
-        let errorMessages = "<div><h3>Attention:</h3></div> <ul>"
+        let errorMessages = "<div><span style='font-size: 15px;'>Attention:</span></div> <ul>"
         data.errors.forEach(error=> {
           errorMessages += "<li>"+error.description + "</li>"
         })
@@ -232,7 +236,13 @@ export default function Auth() {
                 {errors.PasswordHash && <span className='error-message'>{errors.PasswordHash}</span>} <br />
 
                 <div className='selecting-profile-pic'>
-                  <ProfilePicSelectorModal onDataSend={handleModelProfileImgData}/>
+                  <ProfilePicSelectorModal 
+                    onDataSend={handleModelProfileImgData} 
+                    setLocalProfileImg={setLocalProfileImg} 
+                    localProfileImg={localProfileImg} 
+                    fileName={fileName} 
+                    setFileName={setFileName}
+                  />
                   { profileImgData && <div>
                       <img src='./src/assets/images/cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
                       <img className="profile-picture"  src={profileImgData} alt="select-profile" /> 
