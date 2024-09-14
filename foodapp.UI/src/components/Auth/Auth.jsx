@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './AuthStyles.css'
+import ProfilePicSelectorModal from '../ProfilePicSelectorModal';
 
 export default function Auth() {
   const navigate = useNavigate(); // Hook to programmatically navigate
@@ -21,7 +22,11 @@ export default function Auth() {
   const [errors, setErrors] = useState({});
   const [isLoding, setIsLoading] = useState(false);
   const [formActive, setFormActive] = useState(false);
+  const [profileImgData, setProfileImgData] = useState("");
+
   const validationErrors = {};
+  const loginMessageElement = document.querySelector(".login-message");
+  const regMessageElement = document.querySelector(".reg-message");
   
   // here, it does not ask an already logged in user to the login over and over again
   useEffect(()=>{
@@ -30,6 +35,10 @@ export default function Auth() {
       navigate('/home'); // navigating to the home page if the user is there.
     }
   }, []);
+
+  const handleModelProfileImgData = (data) => {
+    setProfileImgData(data);
+  };
 
   function handleLoginChange(e){
     const {name, value} = e.target;
@@ -53,11 +62,13 @@ export default function Auth() {
   function deactivateContainer() {
     setFormActive(true);
     setErrors({})
+    loginMessageElement.innerHTML = '';
   }
 
   function activateContainer() {
     setFormActive(false);
     setErrors({})
+    regMessageElement.innerHTML = '';
   }
 
   async function loginHandler(e){
@@ -93,17 +104,14 @@ export default function Auth() {
       });
 
       const data = await response.json();
-      const messageElement = document.querySelector(".message");
-  
       if (data.isSuccess == true) {
         setIsLoading(false);
       }
 
       if(data.message) {
-        messageElement.innerHTML = data.message;
-      }
-      else {
-        messageElement.innerHTML = "Something went wrong! Please try agin later.";
+        let errorMessages = "<div><h3>Attention:</h3></div> <ul>";
+        errorMessages += "<li>" + data.message + "</li></ul>";
+        loginMessageElement.innerHTML = errorMessages;
       }
   
       console.log("login status: ", data);
@@ -112,6 +120,8 @@ export default function Auth() {
         localStorage.setItem("user", loginFormData.Email);
         navigate('/home');
       }
+    }else {
+      loginMessageElement.innerHTML = '';
     }
     setIsLoading(false);
   }
@@ -165,21 +175,18 @@ export default function Auth() {
         activateContainer();
       }
 
-      const messageElement = document.querySelector(".message");
-      if(data.message) {
-        messageElement.innerHTML = data.message;
-      }
-      else {
-        let errorMessages = "<div>Attention please:</div> <div class='normal'>"
+      if(!data.message) {
+        let errorMessages = "<div><h3>Attention:</h3></div> <ul>"
         data.errors.forEach(error=> {
-          errorMessages += error.description + " "
+          errorMessages += "<li>"+error.description + "</li>"
         })
 
-        errorMessages += "</div>"
-        messageElement.innerHTML = errorMessages;
+        errorMessages += "</ul>"
+        regMessageElement.innerHTML = errorMessages;
       }
-
       console.log("register status: ", data);
+    } else {
+      regMessageElement.innerHTML = '';
     }
     setIsLoading(false);
   }
@@ -187,27 +194,28 @@ export default function Auth() {
   return (
         <div className={formActive ? 'container active' : 'container'}>
           <div className="form-container sign-in"> 
-            <p className="message"></p>
               <form action="#" className="form" onSubmit={loginHandler}>
               <h1>Sign In</h1>
                 <input type="text" name="Email" placeholder='example@hello.com' onChange={handleLoginChange} />
                 {errors.Email && <span className='error-message'>{errors.Email}</span>}<br />
 
                 <input type="password" name="Password" placeholder="******" onChange={handleLoginChange} />
-                {errors.Password && <span className='error-message'>{errors.Password}</span>}<br />
+                {errors.Password && <span className='error-message'>{errors.Password}</span>}
                
+               <div className='remember-section'>
                 <input type="checkbox" name="Remember" onChange={handleLoginChange} />
                 <label htmlFor="password">Remember?</label><br />
-
+               </div><br />
+                
                 <button type="submit" disabled={isLoding}>
                   { isLoding?
                     <div className="loading-spinner"></div>
                     : "Login" }
                 </button>
+                <p className="login-message message"></p>
               </form>
           </div>
           <div className="form-container sign-up"> 
-            <p className="message"></p>
               <form action="#" className="form" onSubmit={registerHandler} autoComplete="off">
               <h1>Create Account</h1>
                 <input type="text" name="Name" id="name" placeholder="Enter your name" onChange={handleRegChange}  />
@@ -217,13 +225,18 @@ export default function Auth() {
                 {errors.Email && <span className='error-message'>{errors.Email}</span>}<br />
 
                 <input type="password" name="PasswordHash" id="password" placeholder="******" onChange={handleRegChange} />
-                {errors.PasswordHash && <span className='error-message'>{errors.PasswordHash}</span>}<br />
+                {errors.PasswordHash && <span className='error-message'>{errors.PasswordHash}</span>} <br />
 
+                <div className='selecting-profile-pic'>
+                  <ProfilePicSelectorModal onDataSend={handleModelProfileImgData}/>
+                  { profileImgData && <img className="profile-picture"  src={profileImgData} alt="select-profile" /> } 
+                </div>
                 <button type="submit" disabled={isLoding}>
                   { isLoding?
                     <div className="loading-spinner"></div>
                     : "Register" }
                 </button>
+                <p className="reg-message message"></p>
               </form>
           </div>
           <div className="toggle-container">

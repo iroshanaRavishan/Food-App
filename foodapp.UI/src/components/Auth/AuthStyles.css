@@ -24,12 +24,30 @@
   
   .error-message {
     color: rgb(243, 61, 61);
-    font-size: 13px;
-    font-weight: 400;
+    font-weight: 600;
+  }
+
+  .message {
+    color: rgb(243, 61, 61);
+    font-size: 12px !important;
+    font-weight: 600;
+    margin: 20px 0 !important;
+    width: 100%;
+  }
+
+  .selecting-profile-pic {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  .selecting-profile-pic img {
+    margin: 0 10px;
   }
   
   .loading-spinner {
-    /* display: inline-block; */
+    display: inline-block;
     margin-left: 10px;
     width: 18px;
     height: 18px;
@@ -85,13 +103,22 @@
   .container button.hidden {
     background-color: transparent;
     border-color: #fff;
-    
   }
 
   .loading {
     border-color: #a0d3b2 !important;
     color: #9e9e9e  !important;
     background-color: #afd4c2  !important;
+  }
+
+  .remember-section {
+    display: flex;
+    align-items: center;
+  }
+
+  .remember-section label {
+    padding: 0 10px;
+    font-size: 14px;
   }
 
   .container form {
