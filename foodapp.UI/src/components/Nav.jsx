@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
 import styles from "./nav.module.css"
 import LoadingPopup from "./LoadingPopup";
+import { useUser } from '../context/UserContext'
 
 export default function Nav() {
 
     const [isLoading, setIsLoading] = useState(false);
     const [loggedUser, setLoggedUser] = useState(null);
     const currentPath = window.location.pathname;
+    const { user } = useUser();
 
     useEffect(()=>{
-        const user = localStorage.getItem('user');
-        setLoggedUser(user);
-    },[])
+        const userEmail = localStorage.getItem('userEmail');
+        setLoggedUser(userEmail);
+    },[user])
 
+    const profilePictureUrl = user?.profilePicture 
+    ? `data:${user.profilePictureContentType};base64,${user.profilePicture}` 
+    : null;
+    
     async function logOutHandler() {
         setIsLoading(true);
         setTimeout(async () => {
@@ -23,7 +29,7 @@ export default function Nav() {
                 });
                 const data = await response.json();
                 if (response.ok) {
-                    localStorage.removeItem("user");
+                    localStorage.removeItem("userEmail");
                     document.location = "/auth";
                 } else {
                     console.log("Could not log out: ", response);
@@ -47,7 +53,7 @@ export default function Nav() {
                     <a href="/admin" className={currentPath === '/admin' ? styles.active : ''}>Admin</a>
                     { loggedUser && (
                     <div className={styles.profilePicandLogoutArea}>
-                        <a href="/profile"><img src="./src/assets/images/profile.jpg" alt="Profile" className="profile-picture"/></a>
+                        <a href="/profile"><img src={profilePictureUrl} alt="Profile" className="profile-picture"/></a>
 
                         <span onClick={logOutHandler}>
                             <img className={styles.logOutBtn} src="./src/assets/images/logout.png" alt="logout"/>
