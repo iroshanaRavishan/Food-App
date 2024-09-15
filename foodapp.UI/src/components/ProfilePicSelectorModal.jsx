@@ -91,7 +91,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploaded
                               <span className='disabled-text'>{loadingErrr}</span> 
                           </div>
                         :
-                          <div style={{ display: "flex", flexWrap: "wrap" }}>
+                          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-evenly" }}>
                               {images.map(image => (
                                   <div key={image.id} >
                                       <img src={image.url} alt={`Image ${image.id}`} className='profile-picture' onClick={() => sendDataToParentFromServer(image)} />
@@ -119,10 +119,13 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploaded
                       </div>
                       <div className={styles.imageUploadingArea}>
                         <div>
-                          { fileName && <span style={{fontWeight : "700", fontSize: "14px"}}>Want to upload this <br /> image?</span> }<br />
-                          <span className='disabled-text'>{truncateFileName(fileName, 20)}</span> {/* Truncate filename */}
+                          { (fileName && locallyUploadedProfileImg) && <div>
+                            <span style={{fontWeight : "700", fontSize: "14px"}}>Want to upload this <br /> image?</span><br />
+                            <span className='disabled-text'>{truncateFileName(fileName, 20)}</span>
+                          </div> }
+                          
                         </div>
-                        { fileName && (
+                        { (fileName && locallyUploadedProfileImg) && (
                           <div className={styles.uploadBtn} onClick={sendDataToParentFromLocal}>
                             <img src="./src/assets/images/active-upload.png" className={styles.blinkingImage} alt="active-upload" />
                             <span>Click to save</span>

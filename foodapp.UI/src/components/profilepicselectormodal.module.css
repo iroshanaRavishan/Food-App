@@ -12,7 +12,7 @@
 } 
 
 .popupContent {
-    width: 255px;
+    width: 225px;
     min-height: 200px;
     max-height: 50vh; 
     border: 1px solid #ccc;
