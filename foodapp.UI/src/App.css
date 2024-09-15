@@ -1,35 +1,34 @@
 html, body { height: 100%; }
 body {
-    margin: 0;
-    font-family: Roboto, Helvetica, sans-serif;
-    min-height: 100vh;
-    justify-content: center; 
+  margin: 0;
+  font-family: Roboto, Helvetica, sans-serif;
+  min-height: 100vh;
+  justify-content: center; 
 }
 
 .profile-picture {
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1px solid #fff;
-    transition: all 200ms;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #fff;
+  transition: all 200ms;
 }
 
 .profile-picture:hover {
-    box-shadow: 1px 1px 4px 0px rgb(0, 0, 0, 0.5);
+  box-shadow: 1px 1px 4px 0px rgb(0, 0, 0, 0.5);
 }
   
-  .cancel-profile-picture {
-    position: absolute;
-    cursor: pointer;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    background: #fff;
-  }
-  
-  .profile-picture {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
+.cancel-profile-picture {
+  position: absolute;
+  cursor: pointer;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.disabled-text {
+  font-size: 12px !important;
+  color: #999999;
+  font-weight : 700;
+}

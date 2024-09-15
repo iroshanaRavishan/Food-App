@@ -6,6 +6,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
   const [isVisible, setIsVisible] = useState(false);
   const modalRef = useRef();
   const [images, setImages] = useState([]);
+  const [loadingErrr, setLoadingError] = useState("");
 
   useEffect(() => {
     fetch(`https://localhost:7181/api/defaultProfilePicture/all-with-data`, {
@@ -24,9 +25,11 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
             return { id: image.id, url: imageUrl };
         });
         setImages(imageList);
+        setLoadingError("");
     })
     .catch(err => {
         console.error("Error fetching images:", err);
+        setLoadingError("Something went wrong in loading avatars!");
     });
   }, []);
 
@@ -80,14 +83,21 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
                   <div className={styles.popupContent}>
                       <img src='./src/assets/images/cancel.png' onClick={handleClose} className={styles.closeBtn}/>
                       
-                      <h3>Select your Avatar</h3>
-                      <div style={{ display: "flex", flexWrap: "wrap" }}>
-                          {images.map(image => (
-                              <div key={image.id} >
-                                  <img src={image.url} alt={`Image ${image.id}`} className='profile-picture' onClick={() => sendDataToParentFromServer(image.url)} />
-                              </div>
-                          ))}
-                      </div>
+                      <h3 style={{paddingLeft: "10px"}}>Select your Avatar</h3>
+                      { loadingErrr ?
+                          <div className={styles.lostConnectionInLoadingAvatars}>
+                              <img src="./src/assets/images/disconnected.png" alt="diconnected" className={styles.diconnectedPicture} />
+                              <span className='disabled-text'>{loadingErrr}</span> 
+                          </div>
+                        :
+                          <div style={{ display: "flex", flexWrap: "wrap" }}>
+                              {images.map(image => (
+                                  <div key={image.id} >
+                                      <img src={image.url} alt={`Image ${image.id}`} className='profile-picture' onClick={() => sendDataToParentFromServer(image.url)} />
+                                  </div>
+                              ))}
+                          </div>
+                      }
 
                       <span className={styles.avatarSeparator}>or</span>
 
@@ -109,14 +119,14 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
                       <div className={styles.imageUploadingArea}>
                         <div>
                           { fileName && <span style={{fontWeight : "700", fontSize: "14px"}}>Want to upload this <br /> image?</span> }<br />
-                          <span className={styles.imageName}>{fileName}</span> 
+                          <span className='disabled-text'>{fileName}</span> 
                         </div>
-                        {fileName && (
+                        { fileName && (
                           <div className={styles.uploadBtn} onClick={sendDataToParentFromLocal}>
                             <img src="./src/assets/images/active-upload.png" className={styles.blinkingImage} alt="active-upload" />
                             <span>Click to save</span>
                           </div>
-                        )}
+                        ) }
                       </div>
                   </div>
               </div>
