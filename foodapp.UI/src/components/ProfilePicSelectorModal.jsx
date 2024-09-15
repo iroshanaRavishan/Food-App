@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './profilepicselectormodal.module.css'
+import { truncateFileName } from '../utils/utils'; 
 
-export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg, localProfileImg, fileName, setFileName }) {
+export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploadedProfileImg, locallyUploadedProfileImg, fileName, setFileName }) {
 
   const [isVisible, setIsVisible] = useState(false);
   const modalRef = useRef();
@@ -22,7 +23,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
     .then(data => {
         const imageList = data.map(image => {
             const imageUrl = `data:${image.contentType};base64,${image.data}`;
-            return { id: image.id, url: imageUrl };
+            return { id: image.id, url: imageUrl, imageName: image.fileName };
         });
         setImages(imageList);
         setLoadingError("");
@@ -42,17 +43,17 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
     }
   }
 
-  function sendDataToParentFromServer(imageUrl) {
-    const newProfileImg = imageUrl;
+  function sendDataToParentFromServer(image) {
+    const newProfileImg = image.url;
     onDataSend(newProfileImg);
-    setLocalProfileImg("");
-    setFileName("")
+    setLocallyUploadedProfileImg("");
+    setFileName(image.imageName)
     handleClose();
   }
 
   function sendDataToParentFromLocal() {
-    if (localProfileImg) {
-      onDataSend(localProfileImg);
+    if (locallyUploadedProfileImg) {
+      onDataSend(locallyUploadedProfileImg);
       handleClose(); 
     }
   }
@@ -63,7 +64,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
       const reader = new FileReader();
       reader.onload = function (loadEvent) {
         const uploadedImage = loadEvent.target.result;
-        setLocalProfileImg(uploadedImage);
+        setLocallyUploadedProfileImg(uploadedImage);
       };
       reader.readAsDataURL(file);
       setFileName(file.name);
@@ -71,7 +72,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
   }
 
   function handleCloseSelectedImage () {
-    setLocalProfileImg("");
+    setLocallyUploadedProfileImg("");
     setFileName("");
   }
 
@@ -93,7 +94,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
                           <div style={{ display: "flex", flexWrap: "wrap" }}>
                               {images.map(image => (
                                   <div key={image.id} >
-                                      <img src={image.url} alt={`Image ${image.id}`} className='profile-picture' onClick={() => sendDataToParentFromServer(image.url)} />
+                                      <img src={image.url} alt={`Image ${image.id}`} className='profile-picture' onClick={() => sendDataToParentFromServer(image)} />
                                   </div>
                               ))}
                           </div>
@@ -105,10 +106,10 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
                         <label htmlFor="fileUpload" className={styles.chooseBtn}> Choose Image</label>
                         <input type="file" id="fileUpload" accept="image/*" className={styles.fileInput} onChange={handleFileUpload} />
 
-                        { localProfileImg ? 
+                        { locallyUploadedProfileImg ? 
                           <div>
-                              <img src='./src/assets/images/disabled-cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
-                              <img className="profile-picture" src={localProfileImg} alt="profile-avatar" />
+                              <img src='./src/assets/images/cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
+                              <img className="profile-picture" src={locallyUploadedProfileImg} alt="profile-avatar" />
                           </div> : 
                           <div>
                             <img src='./src/assets/images/disabled-cancel.png' className='cancel-profile-picture' />
@@ -119,7 +120,7 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocalProfileImg
                       <div className={styles.imageUploadingArea}>
                         <div>
                           { fileName && <span style={{fontWeight : "700", fontSize: "14px"}}>Want to upload this <br /> image?</span> }<br />
-                          <span className='disabled-text'>{fileName}</span> 
+                          <span className='disabled-text'>{truncateFileName(fileName, 20)}</span> {/* Truncate filename */}
                         </div>
                         { fileName && (
                           <div className={styles.uploadBtn} onClick={sendDataToParentFromLocal}>

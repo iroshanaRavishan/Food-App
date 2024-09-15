@@ -23,7 +23,7 @@ export default function Auth() {
   const [isLoding, setIsLoading] = useState(false);
   const [formActive, setFormActive] = useState(false);
   const [profileImgData, setProfileImgData] = useState("");
-  const [localProfileImg, setLocalProfileImg] = useState("");
+  const [locallyUploadedProfileImg, setLocallyUploadedProfileImg] = useState("");
   const [fileName, setFileName] = useState("");
 
   const validationErrors = {};
@@ -40,10 +40,11 @@ export default function Auth() {
 
   function handleModelProfileImgData(data) {
     setProfileImgData(data);
+    setErrors(prevErrors => ({ ...prevErrors, ProfilePicture: "" })); // Clear the validation error
   };
 
   function handleCloseSelectedImage () {
-    setLocalProfileImg("")
+    setLocallyUploadedProfileImg("")
     setProfileImgData("");
     setFileName("");
   }
@@ -155,22 +156,33 @@ export default function Auth() {
       validationErrors.PasswordHash = "Password is required!";
     }
 
+    if(!profileImgData) {
+      validationErrors.ProfilePicture = "Required field!";
+    }
+
     // creating the user name
     const newUserName = regFormData.Name.trim().split(" ");
     regFormData.UserName = newUserName.join("");
 
     setErrors(validationErrors);
 
-    console.log('data before submit', regFormData)
     if (Object.keys(validationErrors).length === 0) {
+      const formData = new FormData();
+      formData.append('Name', regFormData.Name);
+      formData.append('Email', regFormData.Email);
+      formData.append('UserName', regFormData.UserName);
+      formData.append('Password', regFormData.PasswordHash);
+  
+      if (profileImgData) {
+        const imageBlob = await fetch(profileImgData).then(r => r.blob());
+        formData.append('ProfilePicture', imageBlob, fileName);
+      } 
+      
+      console.log('data before submit', formData)
       const response = await fetch("https://localhost:7181/api/Auth/register", {
         method: "POST",
         credentials: 'include',
-        body: JSON.stringify(regFormData),
-        headers: {
-          "content-type": "Application/json",
-          "Accept": "application/json"
-        }
+        body: formData
       })
 
       const data = await response.json();
@@ -238,11 +250,12 @@ export default function Auth() {
                 <div className='selecting-profile-pic'>
                   <ProfilePicSelectorModal 
                     onDataSend={handleModelProfileImgData} 
-                    setLocalProfileImg={setLocalProfileImg} 
-                    localProfileImg={localProfileImg} 
+                    setLocallyUploadedProfileImg={setLocallyUploadedProfileImg} 
+                    locallyUploadedProfileImg={locallyUploadedProfileImg} 
                     fileName={fileName} 
                     setFileName={setFileName}
                   />
+                  { errors.ProfilePicture && <span className='error-message' style={{marginLeft: "10px"}}>{errors.ProfilePicture}</span>} 
                   { profileImgData && <div>
                       <img src='./src/assets/images/cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
                       <img className="profile-picture"  src={profileImgData} alt="select-profile" /> 
