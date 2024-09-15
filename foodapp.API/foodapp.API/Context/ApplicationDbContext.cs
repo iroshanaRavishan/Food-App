@@ -8,5 +8,10 @@ namespace foodapp.API.Context
     {
         // constructor
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            // Additional configurations if any
+        }
     }
 }
