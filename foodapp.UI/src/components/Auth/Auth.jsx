@@ -32,8 +32,8 @@ export default function Auth() {
   
   // here, it does not ask an already logged in user to the login over and over again
   useEffect(()=>{
-    const user = localStorage.getItem("user");
-    if(user) {
+    const userEmail = localStorage.getItem("userEmail");
+    if(userEmail) {
       navigate('/home'); // navigating to the home page if the user is there.
     }
   }, []);
@@ -126,7 +126,7 @@ export default function Auth() {
       console.log("login status: ", data);
   
       if(response.ok) {
-        localStorage.setItem("user", loginFormData.Email);
+        localStorage.setItem("userEmail", loginFormData.Email);
         navigate('/home');
       }
     }else {

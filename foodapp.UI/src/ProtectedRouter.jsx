@@ -19,14 +19,14 @@ export default function ProtectedRouter() {
             }
         }).then(data=> {
             setUser(data.user);  // Store user data in context
-            localStorage.setItem("user", data.user.email)
+            localStorage.setItem("userEmail", data.user.email)
             console.log(data.user);
             setIsLogged(true)
             setWaiting(false)
         }).catch(err=> {
             console.log("Error protected routes: ", err);
             setWaiting(false);
-            localStorage.removeItem("user");
+            localStorage.removeItem("userEmail");
             setUser(null); // Clear user data in context
         })
     },[setUser])
