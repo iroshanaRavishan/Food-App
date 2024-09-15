@@ -16,5 +16,8 @@ namespace foodapp.API.Model
         public DateTime LastLogin { get; set; }
 
         public bool IsAdmin { get; set; } = false;
+
+        public byte[] ProfilePicture { get; set; }
+        public string ProfilePictureContentType { get; set; } // MIME type of the image
     }
 }
