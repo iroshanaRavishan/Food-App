@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using System.Security.Claims;
 
 namespace foodapp.API.Controllers
@@ -21,21 +22,30 @@ namespace foodapp.API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser(User user)
+        public async Task<IActionResult> RegisterUser([FromForm] UserRegistrationModel model)
         {
-
             IdentityResult result = new();
 
             try
             {
-                User user_ = new User()
+                User user = new User()
                 {
-                    Name = user.Name,
-                    Email = user.Email,
-                    UserName = user.UserName,
+                    Name = model.Name,
+                    Email = model.Email,
+                    UserName = model.UserName,
+                    CreatedDate = DateTime.UtcNow,
+                    ModifiedDate = DateTime.UtcNow
                 };
 
-                result = await userManager.CreateAsync(user_, user.PasswordHash);
+                if (model.ProfilePicture != null)
+                {
+                    using var memoryStream = new MemoryStream();
+                    await model.ProfilePicture.CopyToAsync(memoryStream);
+                    user.ProfilePicture = memoryStream.ToArray();
+                    user.ProfilePictureContentType = model.ProfilePicture.ContentType;
+                }
+
+                result = await userManager.CreateAsync(user, model.Password);
 
                 if(!result.Succeeded)
                 {
@@ -44,7 +54,12 @@ namespace foodapp.API.Controllers
 
             } catch (Exception ex)
             {
-                return BadRequest(new{message = "Something went wrong, Please try again. " +  ex.Message, isSuccess = false});
+                var innerExceptionMessage = ex.InnerException?.Message;
+                return BadRequest(new
+                {
+                    message = $"Something went wrong, Please try again. {ex.Message}. Inner Exception: {innerExceptionMessage}",
+                    isSuccess = false
+                });
             }
 
             return Ok(new { message = "Registration Successfull!", result = result, isSuccess = true });
@@ -148,6 +163,18 @@ namespace foodapp.API.Controllers
             }
 
             return Ok(new { message = "Logged In", user = currentUser, isSuccess = true});
+        }
+
+        [HttpGet("profile-picture/{userId}")]
+        public async Task<IActionResult> GetProfilePicture(string userId)
+        {
+            var user = await userManager.FindByIdAsync(userId);
+            if (user == null || user.ProfilePicture == null)
+            {
+                return NotFound();
+            }
+
+            return File(user.ProfilePicture, user.ProfilePictureContentType);
         }
     }
 }
