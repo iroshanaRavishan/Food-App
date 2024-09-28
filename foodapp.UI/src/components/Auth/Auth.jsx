@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import './AuthStyles.css'
 import ProfilePicSelectorModal from '../ProfilePicSelectorModal';
+import ImageSlider from '../ImageSlider';
 
 export default function Auth() {
   const navigate = useNavigate(); // Hook to programmatically navigate
@@ -19,6 +20,12 @@ export default function Auth() {
     UserName: ""
   });
 
+  const images = [
+    './src/assets/images/background-1.jpg',
+    './src/assets/images/background-2.jpg',
+    './src/assets/images/background-3.jpg'
+  ];
+
   const [errors, setErrors] = useState({});
   const [isLoding, setIsLoading] = useState(false);
   const [formActive, setFormActive] = useState(false);
@@ -34,8 +41,15 @@ export default function Auth() {
   useEffect(()=>{
     const userEmail = localStorage.getItem("userEmail");
     if(userEmail) {
-      navigate('/home'); // navigating to the home page if the user is there.
+      navigate('/'); // navigating to the home page if the user is there.
     }
+        // Disable scroll when the component is mounted
+        document.body.style.overflow = 'hidden';
+
+        // Cleanup function to enable scroll when the component is unmounted
+        return () => {
+          document.body.style.overflow = 'auto';
+        };
   }, []);
 
   function handleModelProfileImgData(data) {
@@ -78,6 +92,11 @@ export default function Auth() {
     setFormActive(false);
     setErrors({})
     regMessageElement.innerHTML = '';
+  }
+
+  // this is to close the login/signup modal. 
+  function handleClose(){
+    navigate('/');
   }
 
   async function loginHandler(e){
@@ -127,7 +146,7 @@ export default function Auth() {
   
       if(response.ok) {
         localStorage.setItem("userEmail", loginFormData.Email);
-        navigate('/home');
+        navigate('/');
       }
     }else {
       loginMessageElement.innerHTML = '';
@@ -212,6 +231,8 @@ export default function Auth() {
   }
 
   return (
+      <div className='main-container'>
+        <ImageSlider images={images} />
         <div className={formActive ? 'container active' : 'container'}>
           <div className="form-container sign-in"> 
               <form action="#" className="form" onSubmit={loginHandler}>
@@ -287,5 +308,6 @@ export default function Auth() {
             </div>
           </div>
         </div>
+      </div>
   )
 }
