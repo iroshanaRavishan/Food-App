@@ -1,0 +1,73 @@
+  .addressInput {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    color: antiquewhite;
+    z-index: 1000;
+    top: 40%;
+    left: 50%;
+    width: max-content;
+    transform: translate(-50%);
+    padding: 30px 100px;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.082);
+    backdrop-filter: blur(4px);
+  }
+  
+  .addressInput span.addressInputLabel {
+    color: rgb(236, 236, 234);
+    font-size: 50px;
+    font-weight: 200;
+    width: auto;
+  }
+  
+  .inputWrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .locationIcon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 25px;
+    width: auto;
+    z-index: 1;
+  }
+  
+  .addressInput input {
+    width: 100%;
+    padding: 10px 120px 10px 60px;
+    height: 60px;
+    font-size: 17px;
+    border-radius: 8px;
+    border: none;
+    box-sizing: border-box;
+  }
+  
+  .addressInput input:focus {
+    outline: none;
+    border-bottom: 2px solid rgb(5, 148, 12);
+  }
+  
+  .findFoodButton {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 18px;
+    font-weight: 600;
+    height: 100%;
+    padding: 0 30px;
+    background-color: rgb(5, 148, 12);
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    transition: all 200ms;
+  }
+  
+  .findFoodButton:hover {
+    background-color: rgb(4, 120, 10);
+  }
