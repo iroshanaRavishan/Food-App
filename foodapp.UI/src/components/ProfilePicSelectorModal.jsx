@@ -4,7 +4,7 @@ import { truncateFileName } from '../utils/utils';
 
 export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploadedProfileImg, locallyUploadedProfileImg, fileName, setFileName }) {
 
-  const [isVisible, setIsVisible] = useState(false);
+  const [isPicModelVisible, setIsPicModelVisible] = useState(false);
   const modalRef = useRef();
   const [images, setImages] = useState([]);
   const [loadingErrr, setLoadingError] = useState("");
@@ -34,8 +34,8 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploaded
     });
   }, []);
 
-  const handleOpen = () => setIsVisible(true);
-  const handleClose = () => setIsVisible(false);
+  const handleOpen = () => setIsPicModelVisible(true);
+  const handleClose = () => setIsPicModelVisible(false);
 
   function closeModal(e) {
     if(modalRef.current === e.target){
@@ -79,10 +79,10 @@ export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploaded
   return (
       <div>
           <span onClick={handleOpen} className={styles.openBtn}>Profile Picture?</span>
-          { isVisible && (
+          { isPicModelVisible && (
               <div className={styles.popupOverlay} ref={modalRef} onClick={closeModal}>
                   <div className={styles.popupContent}>
-                      <img src='./src/assets/images/cancel.png' onClick={handleClose} className={styles.closeBtn}/>
+                      <img src='./src/assets/images/cancel.png' onClick={handleClose} className="closeBtn"/>
                       
                       <h3 style={{paddingLeft: "10px"}}>Select your Avatar</h3>
                       { loadingErrr ?

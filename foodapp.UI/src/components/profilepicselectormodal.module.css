@@ -43,19 +43,6 @@
     background: #555;
 }
 
-.closeBtn {
-    position: absolute;
-    top: 12px;
-    right: 4px;
-    border: none;
-    background: none;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.closeBtn:hover {
-    transform: scale(1.1);
-}
 
 .openBtn {
     font-size: 16px;

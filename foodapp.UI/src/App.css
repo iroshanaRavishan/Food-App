@@ -32,3 +32,22 @@ body {
   color: #999999;
   font-weight : 700;
 }
+
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 4px;
+  border: none;
+  background: none;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.closeBtn:hover {
+  transform: scale(1.1);
+}
+
+.bold-text {
+  font-weight: 800;
+}

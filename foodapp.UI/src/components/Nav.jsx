@@ -34,7 +34,7 @@ export default function Nav() {
                 const data = await response.json();
                 if (response.ok) {
                     localStorage.removeItem("userEmail");
-                    document.location = "/auth";
+                    document.location = "/";
                 } else {
                     console.log("Could not log out: ", response);
                 }
@@ -52,89 +52,90 @@ export default function Nav() {
     };
 
     return <div className={styles.nav}>
-            <div className={styles.logo}>
-                {/* 🍔Food App */}
-                <img style={{height:"70px"}} src='./src/assets/images/logo.png' />
+            <div>
+                <img className={styles.logo} src='./src/assets/images/logo.png' />
             </div>
             <div>
                 <div className={styles.itemHolder}>
-                    <a href="/auth" className={currentPath === '/auth' ? styles.active : ''}>Login</a>
-                    <a href="/home" className={currentPath === '/home' ? styles.active : ''}>Home</a>
-                    <a href="/admin" className={currentPath === '/admin' ? styles.active : ''}>Admin</a>
+                    { !loggedUser && (
+                        <div>
+                            <a href="/auth" className={currentPath === '/auth' ? styles.active : ''}>Login</a>
+                            <a href="/auth" className={currentPath === '/auth' ? styles.active : ''}>Sign Up</a>
+                        </div>
+                    )}
+                    
                     { loggedUser && (
-                    <div className={styles.profilePicandLogoutArea}>
+                        <div className={styles.sideMenuArea}>
+                            <span onClick={sideMenu}>
+                                <img className={styles.menuBtn} src="./src/assets/images/menu.png" alt="logout"/>
+                            </span>
                         
-
-                        <span onClick={sideMenu}>
-                            <img className={styles.menuBtn} src="./src/assets/images/menu.png" alt="logout"/>
-                        </span>
-                        
-                        <div className={`${styles.sideMenu} ${isSideMenuOpen ? styles.open : ""}`}>
-                            <div className={styles.sideMenuFirstContent}>
-                                <div className={styles.menuHeader}>
-                                    <img src={profilePictureUrl} alt="Profile" className="profile-picture"/>
-                                    <span>Hello, {username}</span>
-                                    <span onClick={sideMenu}> 
-                                        <img className={styles.menuBtn} src="./src/assets/images/close-menu.png" alt="close-menu"/>
+                            <div className={`${styles.sideMenu} ${isSideMenuOpen ? styles.open : ""}`}>
+                                <div className={styles.sideMenuFirstContent}>
+                                    <div className={styles.menuHeader}>
+                                        <img src={profilePictureUrl} alt="Profile" className="profile-picture"/>
+                                        <span>Hello, {username}</span>
+                                        <span onClick={sideMenu}> 
+                                            <img className={styles.menuBtn} src="./src/assets/images/close-menu.png" alt="close-menu"/>
+                                        </span>
+                                    </div>
+                                    <a href="/" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/order.png" alt="Orders"/>
+                                        <a>Orders <br />
+                                            <span>Check out the current ongoing orders</span> 
+                                        </a>
+                                    </a>
+                                    <a href="/menu" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/history.png" alt="History"/>
+                                        <a >History <br />
+                                            <span>Access the past, completed orders</span>
+                                        </a>
+                                    </a>
+                                    <a href="/contact" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/promotion.png" alt="Promotion"/>
+                                        <a>Promotion <br />
+                                            <span>Check you luck here</span>
+                                        </a>
+                                    </a>
+                                    <a href="/profile" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/settings.png" alt="Settings"/>
+                                        <a >Settings </a>
+                                    </a>
+                                    <a href="/contact" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/help.png" alt="Contact"/>
+                                        <a >Contact</a>
+                                    </a>
+                                    <a href="/feedback" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/faq.png" alt="FAQ"/>
+                                        <a >FAQ<br />
+                                            <span>Any question, expore here</span>
+                                        </a>
+                                    </a>
+                                    <a href="/feedback" className={styles.menuIconWrapper}>
+                                        <img className={styles.menuIcon} src="./src/assets/images/feedback.png" alt="Feedback"/>
+                                        <a >Feedback<br />
+                                            <span>Feedbacks and suggestions are welcome!</span>
+                                        </a>
+                                    </a>
+                                </div>
+                                <div className={styles.sideMenuMiddleContent}>
+                                    <span>
+                                        <p>There is more to love in the Mobile Application</p>
+                                        <img src='./src/assets/images/logo.png' />
+                                        <a href=""><img src='./src/assets/images/mobile-app-options.png' /></a>
                                     </span>
                                 </div>
-                                <a href="/home" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/order.png" alt="Orders"/>
-                                    <a>Orders <br />
-                                        <span>Check out the current ongoing orders</span> 
-                                    </a>
-                                </a>
-                                <a href="/menu" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/history.png" alt="History"/>
-                                    <a >History <br />
-                                        <span>Access the past, completed orders</span>
-                                    </a>
-                                </a>
-                                <a href="/contact" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/promotion.png" alt="Promotion"/>
-                                    <a>Promotion <br />
-                                        <span>Check you luck here</span>
-                                    </a>
-                                </a>
-                                <a href="/about" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/settings.png" alt="Settings"/>
-                                    <a >Settings </a>
-                                </a>
-                                <a href="/contact" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/help.png" alt="Contact"/>
-                                    <a >Contact</a>
-                                </a>
-                                <a href="/feedback" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/faq.png" alt="FAQ"/>
-                                    <a >FAQ<br />
-                                        <span>Any question, expore here</span>
-                                    </a>
-                                </a>
-                                <a href="/feedback" className={styles.menuIconWrapper}>
-                                    <img className={styles.menuIcon} src="./src/assets/images/feedback.png" alt="Feedback"/>
-                                    <a >Feedback<br />
-                                        <span>Feedbacks and suggestions are welcome!</span>
-                                    </a>
-                                </a>
-                            </div>
-                            <div className={styles.sideMenuMiddleContent}>
-                                <span>
-                                    <p>There is more to love in the Mobile Application</p>
-                                    <img src='./src/assets/images/logo.png' />
-                                    <a href=""><img src='./src/assets/images/mobile-app-options.png' /></a>
-                                </span>
-                            </div>
-                            <div className={styles.sideMenuLastContent}>
-                                <div >
-                                    <img className={styles.menuIcon} id="invite-friends" src="./src/assets/images/invite-friends.png" alt="Feedback"/>    
-                                    <span>Invite Friends?</span>
+                                <div className={styles.sideMenuLastContent}>
+                                    <div >
+                                        <img className={styles.menuIcon} id="invite-friends" src="./src/assets/images/invite-friends.png" alt="Feedback"/>    
+                                        <span>Invite Friends?</span>
+                                    </div>
+                                    <img className={styles.logOutBtn} src="./src/assets/images/logout.png" alt="signout" onClick={logOutHandler}/>
                                 </div>
-                                <img className={styles.logOutBtn} src="./src/assets/images/logout.png" alt="signout" onClick={logOutHandler}/>
                             </div>
+                            {isSideMenuOpen && <div className={styles.overlay} onClick={sideMenu}></div>}
                         </div>
-                        {isSideMenuOpen && <div className={styles.overlay} onClick={sideMenu}></div>}
-                    </div>
-                    ) }
+                    )}
                 </div>
             </div>
         { isLoading && <LoadingPopup /> }

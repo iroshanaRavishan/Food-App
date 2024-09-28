@@ -2,7 +2,7 @@
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
     color: #393e46;
-    padding: 20px;
+    padding: 10px 20px;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.5);
     display: flex;
     justify-content: space-between;
@@ -11,7 +11,8 @@
 }
 
 .logo {
-    font-size: 2em;
+    height: 60px;
+    padding-top: 10px;
 }
 
 a {
@@ -39,7 +40,7 @@ span span {
     cursor: pointer;
 }
 
-.profilePicandLogoutArea {
+.sideMenuArea {
     display: flex;
     align-items: center;
 }
@@ -65,7 +66,6 @@ span span {
 .logOutBtn:hover{
     transform: scale(1.2);
 }
-
 
 .sideMenu {
     width: 250px;
@@ -184,7 +184,7 @@ span span {
     margin: 0 20px;
 }
 
- .sideMenuLastContent {
+.sideMenuLastContent {
     position: relative;
     padding-top: 20px;
 }
@@ -265,4 +265,4 @@ span span {
       transform: scale(1.05);
      box-shadow: 0 0 10px rgba(0, 0, 0, 0.090);
     }
-  }
+}
