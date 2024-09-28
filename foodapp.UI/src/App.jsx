@@ -20,7 +20,7 @@ function App() {
       <Route>
         {/* Protected route wrapper for authentication */}
         <Route element={ <ProtectedRouter /> }>
-          <Route path="/home" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
+          <Route path="/" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/profile" element={<Profile/>} />      
         </Route>
