@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 import styles from './location.module.css'
 
@@ -45,6 +45,23 @@ export default function Location({ onConfirm, onClose }) {
   const [markerPosition, setMarkerPosition] = useState(center);
   const [selectedAddress, setSelectedAddress] = useState("");
   const mapRef = React.useRef();
+
+  const [showBubble, setShowBubble] = useState(false);
+
+  useEffect(() => {
+    // Check if the speech bubble was already shown
+    const bubbleShown = localStorage.getItem('bubbleShown');
+
+    if (!bubbleShown) {
+      setShowBubble(true);
+
+      localStorage.setItem('bubbleShown', 'true');
+
+      setTimeout(() => {
+        setShowBubble(false);
+      }, 5000);
+    }
+  }, []);
 
   // Geocode to get the address from coordinates
   async function fetchAddressFromCoordinates(latLng) {
@@ -108,17 +125,14 @@ export default function Location({ onConfirm, onClose }) {
       />
 
       {/* Static Marker in the Center of the Map */}
-      <div
-        style={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -100%)",
-          zIndex: "10", 
-          pointerEvents: "none",
-        }}
-      >
-        <img src="./src/assets/images/marker.png" alt="Marker" width="30" height="30" />
+      <div className={styles.markerWrapper}>
+        {showBubble && (
+          <div className={styles.pointingMessageWrapper}>
+            <div className={`${styles.bubble} ${styles.right}`}> Point me to the location</div>
+            <div className={styles.pointingLine}></div>
+          </div>
+        )}
+        <img src="./src/assets/images/marker.png" alt="Marker" />
       </div>
 
       <div className={styles.buttonWrapper}>
