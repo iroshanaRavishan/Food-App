@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
-import './AuthStyles.css'
-import ProfilePicSelectorModal from '../ProfilePicSelectorModal';
-import ImageSlider from '../ImageSlider';
+import styles from './auth.module.css'
+import ProfilePicSelectorModal from './ProfilePicSelectorModal';
+import ImageSlider from './ImageSlider';
 
 export default function Auth() {
   const navigate = useNavigate(); // Hook to programmatically navigate
@@ -231,44 +231,45 @@ export default function Auth() {
   }
 
   return (
-      <div className='main-container'>
+      <div className={styles.mainContainer}>
         <ImageSlider images={images} />
-        <div className={formActive ? 'container active' : 'container'}>
-          <div className="form-container sign-in"> 
-              <form action="#" className="form" onSubmit={loginHandler}>
+        <div className={formActive ? `${styles.container} ${styles.active}` : `${styles.container}`}>
+          <div className={`${styles.formContainer} ${styles.signIn}`}> 
+              <form action="#" className={styles.form} onSubmit={loginHandler}>
               <h1>Sign In</h1>
                 <input type="text" name="Email" placeholder='example@hello.com' onChange={handleLoginChange} />
-                {errors.Email && <span className='error-message'>{errors.Email}</span>}<br />
+                {errors.Email && <span className={styles.errorMessage}>{errors.Email}</span>}<br />
 
                 <input type="password" name="Password" placeholder="******" onChange={handleLoginChange} />
-                {errors.Password && <span className='error-message'>{errors.Password}</span>}
+                {errors.Password && <span className={styles.errorMessage}>{errors.Password}</span>}
                
-               <div className='remember-section'>
+               <div className={styles.rememberSection}>
                 <input type="checkbox" name="Remember" onChange={handleLoginChange} />
                 <label htmlFor="password">Remember?</label><br />
                </div><br />
                 
                 <button type="submit" disabled={isLoding}>
                   { isLoding?
-                    <div className="loading-spinner"></div>
-                    : "Login" }
+                    <div className={styles.loadingSpinner}></div> : 
+                    "Login" 
+                  }
                 </button>
-                <p className="login-message message"></p>
+                <p className={`login-message ${styles.message}`}></p>
               </form>
           </div>
-          <div className="form-container sign-up"> 
-              <form action="#" className="form" onSubmit={registerHandler} autoComplete="off">
+          <div className={`${styles.formContainer} ${styles.signUp}`}> 
+              <form action="#" className={styles.form} onSubmit={registerHandler} autoComplete="off">
               <h1>Create Account</h1>
                 <input type="text" name="Name" id="name" placeholder="Enter your name" onChange={handleRegChange}  />
-                {errors.Name && <span className='error-message'>{errors.Name}</span>}<br />
+                {errors.Name && <span className={styles.errorMessage}>{errors.Name}</span>}<br />
 
                 <input type="text" name="Email" id="email" placeholder="example@hello.com" onChange={handleRegChange}  />
-                {errors.Email && <span className='error-message'>{errors.Email}</span>}<br />
+                {errors.Email && <span className={styles.errorMessage}>{errors.Email}</span>}<br />
 
                 <input type="password" name="PasswordHash" id="password" placeholder="******" onChange={handleRegChange} />
-                {errors.PasswordHash && <span className='error-message'>{errors.PasswordHash}</span>} <br />
+                {errors.PasswordHash && <span className={styles.errorMessage}>{errors.PasswordHash}</span>} <br />
 
-                <div className='selecting-profile-pic'>
+                <div className={styles.selectingProfilePic}>
                   <ProfilePicSelectorModal 
                     onDataSend={handleModelProfileImgData} 
                     setLocallyUploadedProfileImg={setLocallyUploadedProfileImg} 
@@ -276,33 +277,33 @@ export default function Auth() {
                     fileName={fileName} 
                     setFileName={setFileName}
                   />
-                  { errors.ProfilePicture && <span className='error-message' style={{marginLeft: "10px"}}>{errors.ProfilePicture}</span>} 
+                  { errors.ProfilePicture && <span className={styles.errorMessage} style={{marginLeft: "10px"}}>{errors.ProfilePicture}</span>} 
                   { profileImgData && <div>
-                      <img src='./src/assets/images/cancel.png' className='cancel-profile-picture' onClick={handleCloseSelectedImage}  />
+                      <img src='./src/assets/images/cancel.png' className="cancel-profile-picture" onClick={handleCloseSelectedImage}  />
                       <img className="profile-picture"  src={profileImgData} alt="select-profile" /> 
                     </div>} 
                 </div>
                 <button type="submit" disabled={isLoding}>
                   { isLoding?
-                    <div className="loading-spinner"></div>
+                    <div className={styles.loadingSpinner}></div>
                     : "Register" }
                 </button>
-                <p className="reg-message message"></p>
+                <p className={`reg-message ${styles.message}`}></p>
               </form>
           </div>
-          <div className="toggle-container">
-            <div className="toggle">
-              <div className="toggle-panel toggle-left">
+          <div className={styles.toggleContainer}>
+            <div className={styles.toggle}>
+              <div className={`${styles.togglePanel} ${styles.toggleLeft}`}>
               <h1>Welcome Back!</h1>
               <p>Enter your personal details to use all of site features. Enter your personal details to use all of site features</p>
-                <button className={isLoding ? 'loading' : 'hidden'} disabled={isLoding} onClick={activateContainer}> Sign In </button>
+                <button className={ isLoding ? `${styles.loading}` : `${styles.hidden}`} disabled={isLoding} onClick={activateContainer}> Sign In </button>
                 <img src="./src/assets/images/img-1.svg" alt="img-1"/>
               </div>
 
-              <div className="toggle-panel toggle-right">
+              <div className={`${styles.togglePanel} ${styles.toggleRight}`}>
               <h1>Hello, Friend!</h1>
               <p>Register with your personal details to use all of site features</p>
-                <button className={isLoding ? 'loading' : 'hidden'} disabled={isLoding} onClick={deactivateContainer}> Sign Up </button>
+                <button className={ isLoding ? `${styles.loading}` : `${styles.hidden}`} disabled={isLoding} onClick={deactivateContainer}> Sign Up </button>
                 <img src="/src/assets/images/img-2.svg" alt="img-2"/>
               </div>
             </div>

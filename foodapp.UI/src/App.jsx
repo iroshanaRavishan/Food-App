@@ -5,7 +5,7 @@ import "./app.css"
 import { BrowserRouter as Router, Routes, Route, createBrowserRouter, createRoutesFromElements, RouterProvider  } from 'react-router-dom';
 
 import ProtectedRouter from "./ProtectedRouter"
-import Auth from "./components/Auth/Auth"
+import Auth from "./components/Auth"
 import Home from "./components/Home"
 import Admin from "./components/Admin";
 import Profile from "./components/Profile";

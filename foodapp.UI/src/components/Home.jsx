@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Search from './Search'
-
 import FoodList from "./FoodList"
 import Container from "./Container"
 import InnerContainer from "./InnerContainer"
