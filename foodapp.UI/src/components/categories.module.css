@@ -1,0 +1,32 @@
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 100px 250px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .categories {
+    background-color: aquamarine;
+    width: 100%;
+  }
+
+  .categoryRow {
+    display: grid;
+    width: 100%;
+    gap: 50px;
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+  }
+
+  .item {
+    background: #0da7e4; 
+    height: 200px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  }
