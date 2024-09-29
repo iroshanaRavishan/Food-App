@@ -9,6 +9,9 @@ import ImageSlider from './ImageSlider'
 import Location from './Location'
 import styles from './home.module.css'
 import Modal from './Modal'; 
+import FeaturedSection from './FeaturedSection'
+import HotestItem from './HotestItem'
+import Categories from './Categories'
 
 export default function Home({foodData, setFoodData, foodId, setFoodId}) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -45,7 +48,12 @@ export default function Home({foodData, setFoodData, foodId, setFoodId}) {
         </div>
       </div>
 
-      <ImageSlider images={images} />  
+      <ImageSlider images={images} />
+      
+      <FeaturedSection />
+      <HotestItem />
+      <Categories />
+
       <Search foodData={foodData} setFoodData={setFoodData} />
       <Container>
           <InnerContainer>
