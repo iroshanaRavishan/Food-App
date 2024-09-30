@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 350px;
+  margin: 0 0 100px 0;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container img {
+  height: 200px;
+  width: 300px;
+  position: absolute;
+  bottom: -150px;
+  right: 70px;
+  z-index: 1;
+  transform: rotate(-20deg);
+}
+
+.categories {
+  background-color: aquamarine;
+  width: 100%;
+}
+
+.categoryRow {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 300px));
+}
+
+.item {
+  background: #0da7e4; 
+  height: 350px;
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}

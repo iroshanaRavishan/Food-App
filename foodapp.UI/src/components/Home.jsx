@@ -11,6 +11,10 @@ import Modal from './Modal';
 import FeaturedSection from './FeaturedSection'
 import HotestItem from './HotestItem'
 import Categories from './Categories'
+import PopularFood from './PopularFood'
+import FlavouredMenu from './FlavouredMenu'
+import SuperDeal from './SuperDeal'
+import Footer from './Footer'
 
 export default function Home({foodData, setFoodData, foodId, setFoodId}) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -52,8 +56,12 @@ export default function Home({foodData, setFoodData, foodId, setFoodId}) {
       <FeaturedSection />
       <HotestItem />
       <Categories />
+      <PopularFood />
+      <FlavouredMenu />
+      <SuperDeal />
+      <Footer />
 
-      <Search foodData={foodData} setFoodData={setFoodData} />
+      {/* <Search foodData={foodData} setFoodData={setFoodData} />
       <Container>
           <InnerContainer>
           <FoodList setFoodId={setFoodId} foodData={foodData}/>
@@ -61,7 +69,7 @@ export default function Home({foodData, setFoodData, foodId, setFoodId}) {
           <InnerContainer>
           <FoodDetails foodId={foodId} />
           </InnerContainer>
-      </Container>
+      </Container> */}
 
       <Modal show={isModalOpen} onClose={() => setIsModalOpen(false)}>
         <Location onConfirm={handleConfirmDrop} /> {/* here, passing the handleConfirmDrop to Location Comp*/}

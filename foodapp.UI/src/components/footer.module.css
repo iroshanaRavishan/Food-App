@@ -1,0 +1,76 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 350px;
+    margin: 0 0 100px 0;
+    justify-content: center;
+    align-items: center;
+    background-color: bisque;
+    height: 800px;
+}
+
+.bottomLine {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.appDownloadContent {
+    background-color: rgb(240, 176, 57);
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.bottomLineContent {
+    background-color: rgb(167, 167, 247);
+    display: grid;
+    width: 100%;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: repeat(1, 1fr);
+    grid-template-columns: 2fr 2fr 2fr; 
+}
+
+.bottomLineItem {
+    background: #0da7e4; 
+    height: 260px;
+    margin: 10px 0;
+    width: 100%;
+    text-align: center;
+    border-radius: 10px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.footer {
+    background-color: rgb(111, 252, 228);
+    width: 100%;
+    height: 60%;
+    display: grid;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    grid-template-rows: 1fr; /* All divs in the same row */
+    grid-template-columns: 2fr 4fr 3fr; /* 2:3:4 ratio */
+}
+
+.contactInfo {
+    background-color: rgb(240, 176, 57);
+    width: 100%;
+    height: 400px;
+}
+
+.about {
+    background-color: rgb(240, 176, 57);
+    width: 100%;
+    height: 400px;
+}
+
+.foodCategories {
+    background-color: rgb(240, 176, 57);
+    width: 100%;
+    height: 400px;
+}
