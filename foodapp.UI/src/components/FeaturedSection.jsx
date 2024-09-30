@@ -3,7 +3,6 @@ import styles from './featuredsection.module.css';
 
 export default function FeaturedSection() {
   return (
-    <div>
         <div className={styles.greenGradient}>
             <div className={styles.backDropImage}></div>
             <h1>promotions</h1>
@@ -19,6 +18,5 @@ export default function FeaturedSection() {
                 </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }

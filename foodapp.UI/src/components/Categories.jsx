@@ -21,6 +21,7 @@ export default function Categories() {
                 <div className={styles.item}>item4</div>
             </div>
         </div>
+        <img src="./src/assets/images/burger3-1.png" alt="burger"/>
     </div>
   )
 }
