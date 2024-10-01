@@ -1,19 +1,11 @@
-.greenGradient{
-  display: flex;
-  height: 120vh;
+.container {
+  height: 1000px;
   width: 100%;
   background: linear-gradient(to bottom, #ffffff 0%, #dbece5 20%, #6fc09e);
   position: relative;
 }
 
-.greenGradient h1{
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  padding-top: 50px;   
-}
-
-.greenGradient::after {
+.container::after {
   content: '';
   position: absolute;
   bottom: -100px; 
@@ -24,7 +16,14 @@
   background-size: cover;
   background-position: center;
   z-index: 200;
-}
+} 
+
+.innerContaner {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  justify-content: space-evenly;
+} 
 
 .backDropImage {
   mix-blend-mode: screen;
@@ -36,52 +35,4 @@
   background-size: cover;
   background-repeat: repeat;
   background-size: auto;
-}
-
-.contentContainer {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  justify-content: center;
-  width: 100%;
-  margin: 0 80px;
-}
-
-.todaysSpecial {
-  background: #28b473;
-  width: 20%;
-  height: 75%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 50px;
-}
-
-.promotions {
-  display: grid;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, auto);
-  margin: 200px 50px 200px 50px;
-}
-
-.item {
-  background: #0da7e4; 
-  padding: 10px;
-  height: 90%;
-  margin: 10px;
-  text-align: center;
-  min-width: 460px;
-  border-radius: 10px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
-}
-
-@media (max-width: 1600px) {
-  .promotions {
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(4, auto);
-  }
 }
