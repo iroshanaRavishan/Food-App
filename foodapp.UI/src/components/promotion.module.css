@@ -1,0 +1,71 @@
+.container {
+  display: flex;
+  height: fit-content;
+  width: fit-content;
+  flex-direction: column;
+}
+
+.header {
+  position: relative;
+  text-align: center;
+  width: auto;
+  padding-top: 50px;  
+}
+
+.header::before {
+  content: 'Enjoy some extra portion';
+  display: block;
+  font-size: 16px;
+  color: #dab62a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 10%; 
+  height: 4px;
+  background-color: #fcd84c; 
+  margin: 10px auto 0; 
+  border-top: 2px solid #a18102;
+  border-right: 4px solid #a18102;
+  -webkit-transform: skew(45deg);
+  -moz-transform: skew(45deg);
+  transform: skew(40deg);
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.promotions {
+  display: grid;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+  
+.item {
+  background: #0da7e4;
+  padding: 10px;
+  min-height: 300px;
+  max-height: 320px;
+  margin: 10px;
+  text-align: center;
+  min-width: 550px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1600px) {
+  .promotions {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, auto);
+  }
+}
