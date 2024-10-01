@@ -55,7 +55,6 @@
   background: #0da7e4;
   padding: 10px;
   min-height: 300px;
-  max-height: 320px;
   margin: 10px;
   text-align: center;
   min-width: 550px;
@@ -63,9 +62,15 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1630px) {
   .promotions {
     grid-template-columns: 1fr;
     grid-template-rows: repeat(4, auto);
+  }
+}
+
+@media (max-width: 1030px) {
+  .header {
+    padding-top: 0;
   }
 }
