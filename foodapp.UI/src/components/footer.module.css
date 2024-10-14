@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     background-color: #f6f7f9;
-    height: 800px;
+    height: auto;
 }
 
 .bottomLine {
@@ -62,6 +62,7 @@
     background-color: #f9f9f9;
     border-radius: 8px;
     max-width: 300px;
+    min-width: 200px;
     margin: 0 auto;
 }
   
@@ -104,7 +105,6 @@
 
 .contactInfo, .about, .foodCategories {
     width: 100%;
-    height: 100%;
     color: #6d6b6b;
     padding: 10px;
     margin-right: 20px;
@@ -112,6 +112,7 @@
 
 .contactInfo {
     flex: 2;
+    min-width: 185px;
 }
 
 .contactInfo p {
@@ -120,6 +121,7 @@
 
 .about {
     flex: 3;
+    min-width: 370px;
 }
 
 .about p {
@@ -160,4 +162,38 @@
 .topicHilighter {
     font-size: 10px;
     text-transform: uppercase;
+}
+
+@media (max-width: 1630px) {
+    .footer {
+        flex-wrap: wrap;
+    }
+
+    .foodCategories {
+        flex: 0 0 100%;
+        order: 3;
+    }
+
+    .contactInfo {
+        flex: 1;
+        order: 1;
+    }
+
+    .about {
+        flex: 2;
+        order: 2;
+    }
+}
+
+@media (max-width: 798px) {
+    .bottomLineContent {
+        margin-top: 50px;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        gap: 20px;
+    }
+
+    .bottomLineItem {
+        width: 100%;
+    }
 }
