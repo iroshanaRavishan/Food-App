@@ -1,3 +1,35 @@
+.header {
+  position: relative;
+  text-align: center;
+  width: auto;
+  padding-top: 50px;  
+  width: -webkit-fill-available;
+}
+
+.header::before {
+  content: 'Enjoy some extra portion';
+  display: block;
+  font-size: 16px;
+  color: #dab62a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 10%; 
+  height: 4px;
+  background-color: #fcd84c; 
+  margin: 10px auto 0; 
+  border-top: 2px solid #a18102;
+  border-right: 4px solid #a18102;
+  -webkit-transform: skew(45deg);
+  -moz-transform: skew(45deg);
+  transform: skew(40deg);
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -8,7 +40,7 @@
   position: relative;
 }
 
-.container img {
+.container .sideImage {
   height: 200px;
   width: 300px;
   position: absolute;
@@ -19,14 +51,13 @@
 }
 
 .categories {
-  background-color: aquamarine;
   width: 100%;
 }
 
 .categoryRow {
   display: grid;
   width: 100%;
-  gap: 20px;
+  gap: 40px;
   align-items: center;
   justify-content: center;
   grid-template-rows: repeat(2, 1fr);
@@ -34,11 +65,71 @@
 }
 
 .item {
-  background: #0da7e4; 
   height: 350px;
-  margin: 10px 0;
+  margin: 20px 0;
   width: 100%;
   text-align: center;
   border-radius: 10px; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.productCard {
+  background-color: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.productCard:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.imageContainer {
+  width: 300px;
+  height: auto;
+  background-color: #fff;
+}
+
+.productImage {
+  width: auto;
+  height: 280px;
+  object-fit: cover;
+}
+
+.productTitle {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: #333;
+  margin: 0 0 10px;
+}
+
+.productDescription {
+  font-size: 0.9em;
+  color: #777;
+  margin-bottom: 15px;
+}
+
+.priceContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.oldPrice {
+  font-size: 0.9em;
+  color: #999;
+  text-decoration: line-through;
+  margin-right: 10px;
+}
+
+.newPrice {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #e67e22;
 }
