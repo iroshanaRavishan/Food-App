@@ -15,7 +15,7 @@
     padding-top: 10px;
 }
 
-a {
+.itemHolder a {
     font-size: 1em;
     padding: 0 10px;
     text-decoration: none;
@@ -26,7 +26,7 @@ a {
     color: rgb(0, 184, 9);
 }
 
-div div a:hover {
+.itemHolder a:hover {
     color: rgb(5, 148, 12);
 }
 

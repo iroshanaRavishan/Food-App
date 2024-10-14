@@ -1,3 +1,35 @@
+.header {
+  position: relative;
+  text-align: center;
+  width: auto;
+  padding-top: 50px;  
+  width: -webkit-fill-available;
+}
+
+.header::before {
+  content: 'Enjoy some extra portion';
+  display: block;
+  font-size: 16px;
+  color: #dab62a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 10%; 
+  height: 4px;
+  background-color: #fcd84c; 
+  margin: 10px auto 0; 
+  border-top: 2px solid #a18102;
+  border-right: 4px solid #a18102;
+  -webkit-transform: skew(45deg);
+  -moz-transform: skew(45deg);
+  transform: skew(40deg);
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -8,7 +40,7 @@
   position: relative;
 }
 
-.container img {
+.container .sideImage {
   height: 300px;
   width: 350px;
   position: absolute;
@@ -19,7 +51,6 @@
 }
 
 .categories {
-  background-color: aquamarine;
   width: 100%;
 }
 
@@ -40,5 +71,30 @@
   width: 100%;
   text-align: center;
   border-radius: 10px; 
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.card {
+  z-index: 20000;
+  text-align: center;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+  padding-top: 15px;
+}
+
+.cardImage {
+  width: 200px;
+  height: 120px;
+}
+
+.cardTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.cardSubtitle {
+  font-size: 0.9em;
+  color: #777;
 }

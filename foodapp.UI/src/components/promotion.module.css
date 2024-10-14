@@ -62,6 +62,170 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.card {
+  width: 570px;
+  margin: 10px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  height: 330px;
+}
+
+.card:hover {
+  transform: scale(1.009);
+  transition: all 0.1s;
+}
+
+.leftSection {
+  flex: 7; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px
+}
+
+.leftSection img {
+  width: 100%;
+  height: auto;
+}
+
+.rightSection {
+  flex: 5; 
+  padding: 20px;
+  background-color: #f53939;
+  color: white;
+  position: relative;
+  z-index: 100;
+}
+
+.rightSection h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+  font-family: 'Bernard MT Condensed';
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.offer h2 {
+  color: #ffcc00;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  text-transform: uppercase;
+  font-size: 40px;
+  text-align: center;
+  font-family: 'Showcard Gothic';
+  text-shadow: #ffffff;
+}
+
+.discount {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: white;
+  color: #f53939;
+  padding: 10px;
+  font-family: 'Bernard MT Condensed'; 
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto 30px;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); 
+  transform: perspective(500px) rotateX(25deg); 
+  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.discount:hover {
+  transform: perspective(500px) rotateX(0deg) translateZ(10px); 
+  box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4); 
+}
+
+.orderSection {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: flex-end;
+}
+
+.ctaText {
+  font-size: 17px;
+  font-family: 'Brush Script MT';
+}
+
+.orderBtn {
+  background-color: #ffffff;
+  color: rgb(192, 6, 6);
+  border: none;
+  padding: 0px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 12px;
+  margin-top: 10px;
+  margin-left: 10px;
+  padding: 3px 10px;
+  border: 1px solid rgb(192, 6, 6);
+}
+
+.orderBtn:hover {
+  background-color: #eed9d9;
+  transition: all 0.3s ease, box-shadow 0.3s ease; 
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.contactInfo p {
+  margin-bottom: 5px;
+}
+
+.zigzag {
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: 155px;
+  top: 0;
+  z-index: 1;
+  transform: rotate(15deg);
+}
+
+.zigzag::before, .zigzag::after {
+  content: '';
+  position: absolute;
+  top: -65px;
+  left: -16px;
+  width: 313px;
+  height: 540px;
+  height: 457px;
+  background-color: #ffcc00;
+  clip-path: polygon(65% 17%, 58% 5%, 64% 33%, 128% 52%, 51% 149%, 32% 44%, 44% 52%, 25% -49%);
+}
+
+.zigzag::after {
+  left: -10px;
+  background-color: #f53939;
+}
+
+.dashedLine {
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  left: 320px;
+  top: 0;
+  border-left: 1px dashed rgb(238, 183, 183);
+  padding-right: 10px;
+  z-index: 110;
+}
+
 @media (max-width: 1630px) {
   .promotions {
     grid-template-columns: 1fr;

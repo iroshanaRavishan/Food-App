@@ -5,7 +5,7 @@
     margin: 0 0 100px 0;
     justify-content: center;
     align-items: center;
-    background-color: bisque;
+    background-color: #f6f7f9;
     height: 800px;
 }
 
@@ -17,15 +17,16 @@
 }
 
 .appDownloadContent {
-    background-color: rgb(240, 176, 57);
     width: 100%;
     height: 100px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px 0;
 }
 
 .bottomLineContent {
-    background-color: rgb(167, 167, 247);
     display: grid;
     width: 100%;
     gap: 20px;
@@ -36,41 +37,127 @@
 }
 
 .bottomLineItem {
-    background: #0da7e4; 
     height: 260px;
     margin: 10px 0;
     width: 100%;
     text-align: center;
     border-radius: 10px; 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+  
+.downloadOptions {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.downloadOptions img {
+    height: 50px;
+    margin: 0 30px;
+}
+
+.infoCard {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    max-width: 300px;
+    margin: 0 auto;
+}
+  
+.iconContainer {
+    display: inline-block;
+    margin-bottom: 15px;
+}
+  
+.icon {
+    width: 50px;
+    height: 50px;
+}
+  
+.infoTitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    margin: 0;
+}
+  
+.infoSubtitle {
+    font-size: 1em;
+    font-weight: normal;
+    color: #777;
+    margin: 5px 0;
+}
+  
+.infoDescription {
+    font-size: 0.9em;
+    color: #999;
+    line-height: 1.5;
+    margin-top: 30px;
 }
 
 .footer {
-    background-color: rgb(111, 252, 228);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.contactInfo, .about, .foodCategories {
     width: 100%;
-    height: 60%;
-    display: grid;
-    gap: 20px;
-    align-items: center;
-    justify-content: center;
-    grid-template-rows: 1fr; /* All divs in the same row */
-    grid-template-columns: 2fr 4fr 3fr; /* 2:3:4 ratio */
+    height: 100%;
+    color: #6d6b6b;
+    padding: 10px;
+    margin-right: 20px;
 }
 
 .contactInfo {
-    background-color: rgb(240, 176, 57);
-    width: 100%;
-    height: 400px;
+    flex: 2;
+}
+
+.contactInfo p {
+    font-size: 14px;
 }
 
 .about {
-    background-color: rgb(240, 176, 57);
-    width: 100%;
-    height: 400px;
+    flex: 3;
+}
+
+.about p {
+    line-height: 24px;
+    font-size: 14px;
 }
 
 .foodCategories {
-    background-color: rgb(240, 176, 57);
-    width: 100%;
-    height: 400px;
+    flex: 2;
+}
+
+.foodCategories a {
+    font-size: 12px;
+}
+
+.categoryList {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+.categoryList a {
+    margin-right: 10px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: #fff;
+    background-color: #444;
+    padding: 0px 12px;
+    border-radius: 8px;
+    line-height: 30px;
+    text-align: left;
+    display: inline-block;
+}
+
+.categoryList a:hover {
+    background-color: #066d25;
+}
+
+.topicHilighter {
+    font-size: 10px;
+    text-transform: uppercase;
 }
