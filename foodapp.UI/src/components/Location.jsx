@@ -140,7 +140,7 @@ export default function Location({ onConfirm, onClose }) {
           Close
         </button>
         <button className={`${styles.inputButton} ${styles.confirmBtn}`} onClick={() => fetchAddressFromCoordinates(markerPosition)}>
-          Confirm Drop
+          Confirm Location
         </button>
       </div>
       {selectedAddress && <p>Selected Address: {selectedAddress}</p>}
