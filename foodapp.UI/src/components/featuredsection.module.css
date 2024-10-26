@@ -1,7 +1,7 @@
 .container {
   height: 1000px;
   width: 100%;
-  background: linear-gradient(to bottom, #ffffff 0%, #dbece5 20%, #6fc09e);
+  background: linear-gradient(to bottom, #f5f4f4 0%, #f0f0f0 20%, #d6d6d6);
   position: relative;
 }
 
