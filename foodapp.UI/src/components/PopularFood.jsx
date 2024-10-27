@@ -1,18 +1,22 @@
 import React from 'react'
 import styles from './popularfood.module.css'
+import { Link } from 'react-router-dom';
 
 export default function PopularFood() {
+    const headingText = "top 10 this week";
+    const formattedText = headingText.toLowerCase().replace(/\s+/g, "-").replace(/[^a-zA-Z0-9-]/g, "");
+    const linkUrl = `/foodSection?section=${formattedText}`;
     return (
         <div className={styles.container}>
             <h1 className={styles.header}>At Glance</h1>
             <div className={styles.categories}>
                 <div className={styles.subHeaderContainer}>
                     <div className={styles.subHeader}>
-                        <h2>Top 10 this week</h2>                        
+                        <h2>{headingText}</h2>                        
                     </div> 
                     <div className={styles.pagination}>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={styles.paginationArrow}/>
-                        <span className={styles.seeAll}>see all</span>
+                         <Link  to={linkUrl}  className={styles.seeAll}>see all</Link>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="next arrow" className={styles.paginationArrow}/>
                     </div>
                 </div>
@@ -73,7 +77,7 @@ export default function PopularFood() {
                     </div> 
                     <div className={styles.pagination}>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={styles.paginationArrow}/>
-                        <span className={styles.seeAll}>see all</span>
+                         <Link to="/foodSection?section=MoreForGreatPrice" className={styles.seeAll}>see all</Link>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="next arrow" className={styles.paginationArrow}/>
                     </div>
                 </div>
@@ -134,7 +138,7 @@ export default function PopularFood() {
                     </div> 
                     <div className={styles.pagination}>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={styles.paginationArrow}/>
-                        <span className={styles.seeAll}>see all</span>
+                         <Link to="/foodSection?section=TodaysOffers" className={styles.seeAll}>see all</Link>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="next arrow" className={styles.paginationArrow}/>
                     </div>
                 </div>
@@ -195,7 +199,7 @@ export default function PopularFood() {
                     </div> 
                     <div className={styles.pagination}>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={styles.paginationArrow}/>
-                        <span className={styles.seeAll}>see all</span>
+                         <Link to="/foodSection?section=PopularAtRestarent" className={styles.seeAll}>see all</Link>
                         <img src="./src/assets/images/right-arrow-dark.png" alt="next arrow" className={styles.paginationArrow}/>
                     </div>
                 </div>
