@@ -10,6 +10,8 @@ import Home from "./components/Home"
 import Admin from "./components/Admin";
 import Profile from "./components/Profile";
 import { UserProvider } from "./context/UserContext";
+import FoodSection from "./components/FoodSection";
+import Footer from "./components/Footer";
 
 function App() {
   const [foodData, setFoodData] = useState([]);
@@ -23,6 +25,7 @@ function App() {
           <Route path="/" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
           <Route path="/admin" element={<Admin/>} />
           <Route path="/profile" element={<Profile/>} />      
+          <Route path="/FoodSection" element={<FoodSection/>} />      
         </Route>
 
         {/* Public routes */}
@@ -50,6 +53,7 @@ function App() {
       {/*This (UserProvider) ensure that all routes and components within have access to the user context. */}
         <Nav />
         <RouterProvider router={router} />
+        <Footer />
       </UserProvider>
     </div>
   )

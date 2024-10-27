@@ -4,6 +4,7 @@ body {
   font-family: Roboto, Helvetica, sans-serif;
   min-height: 100vh;
   justify-content: center; 
+  padding-top: 60px;
 }
 
 .profile-picture {
