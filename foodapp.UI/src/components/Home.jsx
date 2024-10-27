@@ -14,7 +14,6 @@ import Categories from './Categories'
 import PopularFood from './PopularFood'
 import FlavouredMenu from './FlavouredMenu'
 import SuperDeal from './SuperDeal'
-import Footer from './Footer'
 
 export default function Home({foodData, setFoodData, foodId, setFoodId}) {
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -59,7 +58,6 @@ export default function Home({foodData, setFoodData, foodId, setFoodId}) {
       <PopularFood />
       <FlavouredMenu />
       <SuperDeal />
-      <Footer />
 
       {/* <Search foodData={foodData} setFoodData={setFoodData} />
       <Container>

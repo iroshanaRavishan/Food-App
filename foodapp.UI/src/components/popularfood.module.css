@@ -87,6 +87,7 @@
   position: relative;
   cursor: pointer;
   white-space: nowrap; 
+  text-decoration: none;
 }
 
 .pagination img:first-child {

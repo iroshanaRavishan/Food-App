@@ -9,6 +9,7 @@
     align-items: center;
     height: 40px;
     position: fixed;
+    top: 0;
     z-index: 10000;
     background-color: #ffffff;
     width: -webkit-fill-available;

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import styles from "./imageslider.module.css"
+import styles from "./imageslider.module.css";
 
-export default function ImageSlider({ images }) {
+export default function ImageSlider({ images, className }) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ export default function ImageSlider({ images }) {
   }, [images]);
 
   return (
-    <div className={styles.imageSlider}>
+    <div className={`${styles.imageSlider} ${className || ''}`}>
       {images.map((image, index) => (
         <img
           key={index}
