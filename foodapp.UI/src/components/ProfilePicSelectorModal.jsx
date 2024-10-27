@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './profilepicselectormodal.module.css'
-import { truncateFileName } from '../utils/utils'; 
+import { truncateFileName } from '../utils/shortenFileName'; 
 
 export default function ProfilePicSelectorModal({ onDataSend, setLocallyUploadedProfileImg, locallyUploadedProfileImg, fileName, setFileName }) {
 
