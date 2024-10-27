@@ -8,10 +8,12 @@
 
 .container {
     margin: 0 auto;
-    max-width: 1000px;
+    max-width: 1200px;
     padding: 0 10px;
     transition: all 500ms;
     min-width: 730px;
+    display: flex;
+    margin-top: 20px;
 }
 
 .mainTopicArea {
@@ -21,33 +23,35 @@
     align-items: flex-start;
     background-color: #fff;
     width: 100%;
-    padding: 10px 450px;
+    padding: 10px 350px;
     transition: all 500ms;
     min-width: 730px;
 }
 
 .leftSubContainer{
-    
+    flex: 2;
 }
 
 .middleSubContainer {
-
+    flex: 5;
+    background-color: aquamarine;
 }
 
 .rightSubContainer {
-
+    flex: 2;
+    background-color: beige;
 }
 
 /* Media Queries */
 @media (max-width: 1500px) {
     .mainTopicArea {
-        padding: 10px 300px;
+        padding: 10px 250px;
     }
 }
 
 @media (max-width: 1200px) {
     .mainTopicArea {
-        padding: 10px 200px;
+        padding: 10px 150px;
     }
 }
 

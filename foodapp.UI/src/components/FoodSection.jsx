@@ -3,6 +3,8 @@ import { useLocation } from 'react-router-dom';
 import ImageSlider from './ImageSlider';
 import styles from './foodsection.module.css'
 import { formatSectionTitle } from '../utils/titleConverion'; 
+import FoodSectionLeftArea from './FoodSectionLeftArea';
+import FoodSectionRightArea from './FoodSectionRightArea';
 
 
 export default function FoodSection() {
@@ -10,7 +12,6 @@ export default function FoodSection() {
     const params = new URLSearchParams(location.search);
     const section = params.get('section');
 
-    // const rawString = "top-10-this-week";
     const formattedString = formatSectionTitle(params.get('section'));
 
     const images = [
@@ -27,9 +28,13 @@ export default function FoodSection() {
                 <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Id tenetur, ducimus </span>
             </div>
             <div className={styles.container}>
-              <div className={styles.leftSubContainer}></div>
+              <div className={styles.leftSubContainer}>
+                <FoodSectionLeftArea />
+              </div>
               <div className={styles.middleSubContainer}></div>
-              <div className={styles.rightSubContainer}></div>
+              <div className={styles.rightSubContainer}>
+                <FoodSectionRightArea />
+              </div>
             </div>
         </div>
     );
