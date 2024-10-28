@@ -35,11 +35,11 @@
 .middleSubContainer {
     flex: 5;
     background-color: aquamarine;
+    height: 1500px;
 }
 
 .rightSubContainer {
     flex: 2;
-    background-color: beige;
 }
 
 /* Media Queries */

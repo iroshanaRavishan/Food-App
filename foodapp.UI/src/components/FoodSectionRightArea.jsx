@@ -6,6 +6,7 @@ export default function FoodSectionRightArea() {
   return (
     <div className={styles.container}>
         <DynamicDeliciousItem />
+        <DynamicDeliciousItem />
     </div>
   )
 }
