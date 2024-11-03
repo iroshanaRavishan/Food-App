@@ -1,0 +1,50 @@
+[
+    {
+        "discount": 15,
+        "discountType": "buy 1, ..get 1", 
+        "description": "Savor the ultimate comfort food",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 30,
+        "discountType": "Limited Offer", 
+        "description": "Bite into pure joy with real taste",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 20,
+        "discountType": "Flash Sales", 
+        "description": "flavor in every mouthwatering bite",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 35,
+        "discountType": "Bundle Deals", 
+        "description": "makes each bite unforgettable",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 18,
+        "discountType": "buy 1, ..get 1", 
+        "description": "Experience burger bliss with each juicy",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 15,
+        "discountType": "Seasonal Promotions", 
+        "description": "flavors, grilled to perfection just for you!",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 20,
+        "discountType": "buy 1, ..get 1", 
+        "description": "stacked high with crispy lettuce, ripe tomatoes",
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    },
+    {
+        "discount": 25,
+        "discountType": "buy 1, ..get 1", 
+        "description": "Freshly toasted buns, gooey melted cheese", 
+        "imageUrl": "./src/assets/images/double-cheese-burger.png"
+    }
+]

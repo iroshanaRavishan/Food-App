@@ -1,0 +1,51 @@
+[
+    {
+      "id": 1,
+      "name": "Wrangler Burger",
+      "image": "./src/assets/images/cryspy-fry-burger.png",
+      "description": "Blackened chicken, sauteed onions and peppers smothered with pepper jack and",
+      "oldPrice": "570.00",
+      "newPrice": "550.00"
+    },
+    {
+      "id": 2,
+      "name": "Fandango Burger",
+      "image": "./src/assets/images/fandango-burger.png",
+      "description": "Blackened chicken, sauteed onions and peppers smothered with pepper jack and",
+      "oldPrice": "450.00",
+      "newPrice": "410.00"
+    },
+    {
+      "id": 3,
+      "name": "Wrangler Burger",
+      "image": "./src/assets/images/wrangler-burger.png",
+      "description": "Blackened chicken, sauteed onions and peppers smothered with pepper jack and",
+      "oldPrice": "600.00",
+      "newPrice": "550.00"
+    },
+    {
+      "id": 4,
+      "name": "Double Cheese Burger",
+      "image": "./src/assets/images/double-cheese-burger.png",
+      "description": "Blackened chicken, sauteed onions and peppers smothered with pepper jack and",
+      "oldPrice": "270.00",
+      "newPrice": "250.00"
+    },
+    {
+      "id": 5,
+      "name": "Cheddar Burger",
+      "image": "./src/assets/images/cheddar-cheese-burger.png",
+      "description": "Blackened chicken, sauteed onions and peppers smothered with pepper jack and",
+      "oldPrice": "870.00",
+      "newPrice": "800.00"
+    },
+    {
+      "id": 6,
+      "name": "Howdy Hamburger",
+      "image": "./src/assets/images/howdy-hamburger.png",
+      "description": "Blackened chicken, sauteed onions and peppers smothered with pepper jack and",
+      "oldPrice": "790.00",
+      "newPrice": "750.00"
+    }
+  ]
+  
