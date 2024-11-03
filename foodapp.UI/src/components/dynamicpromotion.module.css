@@ -16,6 +16,17 @@
     cursor: pointer;
 }
   
+.slide {
+    display: flex;
+    transition: transform 0.8s ease-in-out; 
+}
+
+.promotionItem {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%; 
+}
+  
 .leftSection {
     flex: 7; 
     display: flex;

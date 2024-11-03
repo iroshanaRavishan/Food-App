@@ -1,21 +1,36 @@
-.productCard {
-    max-width: 300px;
-    min-width: 200px;
-    padding: 10px;
-    margin: 10px;
+.container {
+    display: flex;
+    height: 490px;
+    width: 250px;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
     border-radius: 10px;
+    margin: 10px;
     background-color: white;
     box-shadow: 0 0 12px 0 rgb(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    overflow: hidden;
 }
-  
-.productCard:hover {
+
+.container:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     cursor: pointer;
 }
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%; 
+    transition: box-shadow 0.3s ease;
+    max-width: 300px;
+}
+  
+.slide {
+    display: flex;
+    transition: transform 0.8s ease-in-out; 
+}
   
 .heading {
-    padding: 0 20px;
+    padding: 10px 20px 0 20px;
     position: relative;
     font-size: 18px; 
 }
@@ -56,6 +71,7 @@
 
 .cardContent {
     text-align: center;
+    padding: 0 10px;
 }
   
 .productDescription {
@@ -85,8 +101,7 @@
 }
 
 .buttonContainer {
-    width: 100%;
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 
 .buttonContainer button {
