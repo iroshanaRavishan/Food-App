@@ -4,6 +4,7 @@ import styles from './categoryscroller.module.css';
     export default function CategoryScroller({ selectedItem, setSelectedItem }) {
     const scrollContainerRef = useRef(null);
     const [expandStatus, setExapndStatus] = useState(true)
+    const [selectedIndex, setSelectedIndex] = useState(1);
 
     function scrollLeft() {
         if(scrollContainerRef.current) {
@@ -25,28 +26,42 @@ import styles from './categoryscroller.module.css';
 
     function handleSelectedCategory(name, index) {
         setSelectedItem(name);
+        setSelectedIndex(index)
     }
 
     function handleExpandCategories() {
-        setExapndStatus(!expandStatus)
-
-        if(scrollContainerRef.current) {
-            scrollContainerRef.current.show({
-                display: 'inline-block'
-            });
+        setExapndStatus(!expandStatus);
+        
+        if (!expandStatus) {
+            if (selectedIndex > 4 )
+            gradualScroll();
         }
     }
-
+    
+    function gradualScroll() {
+        if (scrollContainerRef.current) {
+            for (let index = 0; index < selectedIndex-4; index++) {
+                setTimeout(() => {
+                    scrollContainerRef.current.scrollBy({
+                        left: 140 * (selectedIndex - 4),
+                        behavior: 'smooth',
+                    });
+                }, index * 10);
+            }
+        }
+    }
+    
     const category = [
-        { name: 'burgers'},
-        { name: 'noodles'},
-        { name: 'rice'},
-        { name: 'pizza'},
-        { name: 'sawan'},
-        { name: 'sandwiches'},
-        { name: 'kottu'},
-        { name: 'biriyani'},
-        { name: 'pasta'},
+        { name: 'burgers', keyPosition: 1},
+        { name: 'noodles', keyPosition: 2},
+        { name: 'rice', keyPosition: 3},
+        { name: 'pizza', keyPosition: 4},
+        { name: 'sawan', keyPosition: 5},
+        { name: 'sandwiches', keyPosition: 6},
+        { name: 'kottu', keyPosition: 7},
+        { name: 'biriyani', keyPosition: 8},
+        { name: 'pasta', keyPosition: 9},
+        { name: 'gee-rice', keyPosition: 10},
     ]
 
   return (
@@ -56,7 +71,7 @@ import styles from './categoryscroller.module.css';
             <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={`${styles.itemScroller} ${expandStatus ? '' : styles.itemVisibity}`} onClick={scrollLeft}/>
             <div className={`${styles.horizontalItems} ${expandStatus ? '' : styles.wrapItems}`}  ref={scrollContainerRef}>
                 { category.map((item, index)=>(
-                    <li key={index} className={`${styles.item} ${selectedItem == item.name?styles.activeItem: ''}`} onClick={()=>handleSelectedCategory(item.name, index)}>{item.name}</li>
+                    <li key={index} className={`${styles.item} ${selectedItem == item.name?styles.activeItem: ''}`} onClick={()=>handleSelectedCategory(item.name, item.keyPosition)}>{item.name}</li>
                 ))}
             </div>
             <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={`${styles.itemScroller} ${expandStatus ? '' : styles.itemVisibity}`} onClick={scrollRight}/>
