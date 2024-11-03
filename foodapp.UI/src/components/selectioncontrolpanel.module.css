@@ -28,14 +28,22 @@
     margin: 10px 0 0;
 }
 
+.items {
+    padding: 0;
+    margin: 0;
+}
+  
 .item {
     list-style: none;
     display: flex;
     flex-direction: row;
     align-items: center;
     border-radius: 10px;
+    transition: all 200ms;
+    padding: 15px 0;
+    font-size: 15px;
 }
-
+  
 .item:hover {
     background-color: rgb(238, 238, 238);
     cursor: pointer;
@@ -45,9 +53,9 @@
     height: 18px;
     margin: 0 20px;
 }
-
-.item {
-    transition: all 200ms;
-    padding: 15px 0;
-    font-size: 15px;
+  
+.active {
+    background-color: #f0f0f0; /* Lighter background for active item */
+    font-weight: bold;
+    color: #333;
 }
