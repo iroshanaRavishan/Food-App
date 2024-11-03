@@ -34,8 +34,7 @@
 
 .middleSubContainer {
     flex: 5;
-    background-color: aquamarine;
-    height: 1500px;
+    margin-bottom: 50px;
 }
 
 .rightSubContainer {

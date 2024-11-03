@@ -53,7 +53,7 @@ export default function Footer() {
             </div>
 
             <div className={styles.footer}>
-                <div class={styles.contactInfo}>
+                <div className={styles.contactInfo}>
                     <h4>CONTACT INFO</h4>
                     <p><span className={styles.topicHilighter}>Address:</span><br /> 148/10, Station Road, Matale, Sri Lanka</p>
                     <p><span className={styles.topicHilighter}>Phone:</span><br /> 0770000000</p>
@@ -61,15 +61,15 @@ export default function Footer() {
                     <p><span className={styles.topicHilighter}>Website:</span><br /> <a href="#">restaurant.com</a></p>
                 </div>
 
-                <div class={styles.about}>
+                <div className={styles.about}>
                     <h4>ABOUT</h4>
                     <p>Dining at the restaurant at The Valampuri Hotel, Jaffna, is an experience in itself as it comes with a vast array of delicious dishes and delectable treats. The restaurant which is located on the ground floor is a favorite amongst restaurants in Jaffna, with the capacity to accommodate over 60 people.</p>
                     <p>The well-stocked bar which is attached to the restaurant offers you a wide choice of hot and cold beverages as well as signature drinks, cocktails and mocktails. Experience our exceptional bar service while you relax and enjoy the beautiful surroundings of the hotel.</p>
                 </div>
 
-                <div class={styles.foodCategories}>
+                <div className={styles.foodCategories}>
                     <h4>FOOD CATEGORIES</h4>
-                    <div class={styles.categoryList}>
+                    <div className={styles.categoryList}>
                         <a href="#">Biriyanis</a>
                         <a href="#">Naans and Chapathis</a>
                         <a href="#">Appetizers & Salads</a>

@@ -5,6 +5,7 @@ import styles from './foodsection.module.css'
 import { formatSectionTitle } from '../utils/titleConverion'; 
 import FoodSectionLeftArea from './FoodSectionLeftArea';
 import FoodSectionRightArea from './FoodSectionRightArea';
+import FoodSectionMainDisplay from './FoodSectionMainDisplay';
 
 
 export default function FoodSection() {
@@ -31,7 +32,9 @@ export default function FoodSection() {
               <div className={styles.leftSubContainer}>
                 <FoodSectionLeftArea />
               </div>
-              <div className={styles.middleSubContainer}></div>
+              <div className={styles.middleSubContainer}>
+                <FoodSectionMainDisplay sectionName={formattedString}/>
+              </div>
               <div className={styles.rightSubContainer}>
                 <FoodSectionRightArea />
               </div>
