@@ -10,7 +10,7 @@ export default function FoodSectionMainDisplay({ sectionName }) {
     <div className={styles.container}>
         <h3 className={styles.heading}>Categories</h3>
         <CategoryScroller setSelectedItem={setSelectedItem} selectedItem={selectedItem} />
-        <h3 className={styles.subHeading}>{sectionName} -&gt; {selectedItem}</h3>
+        <h3 className={styles.subHeading}>{selectedItem}</h3>
         <MainDisplayFoodItem />
     </div>
   )
