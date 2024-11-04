@@ -156,19 +156,68 @@
     background-color: #a18102;
 }
 
+.timeFeedbackContainer {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+.time {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.time span {
+    font-size: 12px;
+    margin: 0 5px;
+    color: #808080;
+    font-weight: bold;
+}
+
+.feedback {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.feedback span {
+    font-size: 12px;
+    margin: 0 5px;
+    color: #808080;
+    font-weight: bold;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.feedback img {
+    padding: 0 4px;
+    height: 12px;
+}
+
+.descriptionBottomDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .priceContainer {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: flex-start;
-    margin: 10px 0 0 0;
+    align-items: flex-end;
+    margin: 10px 30px 0 0;
 }
   
 .oldPrice {
     font-size: 0.9em;
     color: #999;
     text-decoration: line-through;
-    margin-right: 10px;
 }
   
 .newPrice {

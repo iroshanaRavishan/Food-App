@@ -4,7 +4,7 @@ import CategoryScroller from './CategoryScroller';
 import MainDisplayFoodItem from './MainDisplayFoodItem';
 
 export default function FoodSectionMainDisplay({ sectionName }) {
-  const [selectedItem, setSelectedItem] = useState('');
+  const [selectedItem, setSelectedItem] = useState('burgers');
 
   return (
     <div className={styles.container}>
