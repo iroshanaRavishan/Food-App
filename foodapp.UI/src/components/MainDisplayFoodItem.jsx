@@ -3,16 +3,16 @@ import styles from './maindisplayfooditem.module.css';
 import { useState } from 'react';
 
 const burgers = [
-    { name: 'Classic Cheeseburger', price: 180, foodImage: './src/assets/images/biryani.jpg' },
-    { name: 'Spicy Jalapeño Burger', price: 220, foodImage: './src/assets/images/shawarma-popular.jpg' },
-    { name: 'BBQ Bacon Burger', price: 250, foodImage: './src/assets/images/biryani.jpg' },
-    { name: 'Mushroom Swiss Burger', price: 230, foodImage: './src/assets/images/biryani.jpg' },
-    { name: 'Avocado Ranch Burger', price: 240, foodImage: './src/assets/images/shawarma-popular.jpg' },
-    { name: 'Double Decker Burger', price: 280, foodImage: './src/assets/images/biryani.jpg' },
-    { name: 'Texas BBQ Burger', price: 260, foodImage: './src/assets/images/shawarma-popular.jpg' },
-    { name: 'Veggie Delight Burger', price: 190, foodImage: './src/assets/images/shawarma-popular.jpg' },
-    { name: 'Chipotle Black Bean Burger', price: 200, foodImage: './src/assets/images/biryani.jpg' },
-    { name: 'Crispy Chicken Burger', price: 210, foodImage: './src/assets/images/biryani.jpg' }
+    { name: 'Classic Cheeseburger', price: 180, delayTime: "20 - 35", feedback: 4.1, foodImage: './src/assets/images/biryani.jpg' },
+    { name: 'Spicy Jalapeño Burger', price: 220, delayTime: "35 - 40", feedback: 4.4, foodImage: './src/assets/images/shawarma-popular.jpg' },
+    { name: 'BBQ Bacon Burger', price: 250, delayTime: "15 - 30", feedback: 4.6, foodImage: './src/assets/images/biryani.jpg' },
+    { name: 'Mushroom Swiss Burger', price: 230, delayTime: "10 - 15", feedback: 3.9, foodImage: './src/assets/images/biryani.jpg' },
+    { name: 'Avocado Ranch Burger', price: 240, delayTime: "50 - 60", feedback: 4.8, foodImage: './src/assets/images/shawarma-popular.jpg' },
+    { name: 'Double Decker Burger', price: 280, delayTime: "35 - 45", feedback: 4.9, foodImage: './src/assets/images/biryani.jpg' },
+    { name: 'Texas BBQ Burger', price: 260, delayTime: "10 - 20", feedback: 4.3, foodImage: './src/assets/images/shawarma-popular.jpg' },
+    { name: 'Veggie Delight Burger', price: 190, delayTime: "00 - 10", feedback: 5.0, foodImage: './src/assets/images/shawarma-popular.jpg' },
+    { name: 'Chipotle Black Bean Burger', price: 200, delayTime: "30 - 40", feedback: 3.7, foodImage: './src/assets/images/biryani.jpg' },
+    { name: 'Crispy Chicken Burger', price: 210, delayTime: "35 - 50", feedback: 4.7, foodImage: './src/assets/images/biryani.jpg' }
 ];
 
 export default function MainDisplayFoodItem() {
@@ -69,9 +69,19 @@ export default function MainDisplayFoodItem() {
                                     </span>
                                 )}
                             </div>
-                            <div className={styles.priceContainer}>
-                                <span className={styles.oldPrice}>Rs.{burger.price + 50}</span>
-                                <span className={styles.newPrice}>Rs.{burger.price}</span>
+                            <div className={styles.descriptionBottomDiv}>
+                                <div className={styles.timeFeedbackContainer}>
+                                    <div className={styles.time}>
+                                        <img src="./src/assets/images/stopwatch.png" alt="stopwatch" /> <span>{burger.delayTime} min</span>
+                                    </div>
+                                    <div className={styles.feedback}>
+                                        <img src="./src/assets/images/star-selected.png" alt="feedback" /> <span>{burger.feedback}</span>
+                                    </div>
+                                </div>
+                                <div className={styles.priceContainer}>
+                                    <span className={styles.oldPrice}>Rs.{burger.price + 50}.00</span>
+                                    <span className={styles.newPrice}>Rs.{burger.price}<span className={styles.centPart}>.00</span></span>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.actionButtons}>
