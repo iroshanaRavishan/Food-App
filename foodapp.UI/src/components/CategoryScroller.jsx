@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react';
 import styles from './categoryscroller.module.css';
 
-    export default function CategoryScroller({ selectedItem, setSelectedItem }) {
+    export default function CategoryScroller({ selectedCategory, setSelectedCategory }) {
     const scrollContainerRef = useRef(null);
     const [expandStatus, setExapndStatus] = useState(true)
     const [selectedIndex, setSelectedIndex] = useState(1);
@@ -25,7 +25,7 @@ import styles from './categoryscroller.module.css';
     }
 
     function handleSelectedCategory(name, index) {
-        setSelectedItem(name);
+        setSelectedCategory(name);
         setSelectedIndex(index)
     }
 
@@ -71,7 +71,7 @@ import styles from './categoryscroller.module.css';
             <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={`${styles.itemScroller} ${expandStatus ? '' : styles.itemVisibity}`} onClick={scrollLeft}/>
             <div className={`${styles.horizontalItems} ${expandStatus ? '' : styles.wrapItems}`}  ref={scrollContainerRef}>
                 { category.map((item, index)=>(
-                    <li key={index} className={`${styles.item} ${selectedItem == item.name?styles.activeItem: ''}`} onClick={()=>handleSelectedCategory(item.name, item.keyPosition)}>{item.name}</li>
+                    <li key={index} className={`${styles.item} ${selectedCategory == item.name?styles.activeItem: ''}`} onClick={()=>handleSelectedCategory(item.name, item.keyPosition)}>{item.name}</li>
                 ))}
             </div>
             <img src="./src/assets/images/right-arrow-dark.png" alt="prev arrow" className={`${styles.itemScroller} ${expandStatus ? '' : styles.itemVisibity}`} onClick={scrollRight}/>
