@@ -1,0 +1,73 @@
+.container{
+    position: relative;
+    top: 50%;
+    width: 100%;
+    height: 50px;
+    /* transform: rotateY(180deg); */
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+.container .containerItems{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0 .5em;
+    width: 45%;
+    height: 100%;
+}
+  
+.container .containerItems input{
+    display: none;
+}
+  
+.container .containerItems label{
+    width: 20%;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+  
+.container .containerItems label .starStroke{
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgb(0, 0, 0);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+  
+.container .containerItems label .starStroke .starFill{
+    width: 70%;
+    aspect-ratio: 1;
+    background: rgb(255, 255, 255);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+  
+.container .containerItems input:hover ~ label .starStroke,.container .containerItems input:checked ~ label .starStroke{
+    transform: scale(1.2);
+}
+  
+.container .containerItems input:checked ~ label .starStroke .starFill{
+    background: rgb(0, 0, 0);
+}
+  
+/* .container .containerItems label:hover .labelDescription::after{
+    content: attr(data-content);
+    position: fixed;
+    padding-left: 0px;
+    left: 0;
+    right: 0;
+    margin-inline: auto; 
+    width: 100%;
+    height: 2em;
+    color: #c41919;
+    text-align: right;
+    transform: rotateY(180deg);
+} */
+
+.starCount {
+    font-size: 14px;
+}
