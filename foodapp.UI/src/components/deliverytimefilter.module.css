@@ -1,0 +1,111 @@
+.formWrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -15px;
+}
+  
+.deliveryTimeSlider {
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    position: relative;
+    width: 340px;
+    height: 50px;
+    user-select: none;
+    margin-bottom: 25px;
+}
+  
+.deliveryTimeSlider::before {
+    content: " ";
+    position: absolute;
+    height: 2px;
+    width: calc(100% * 4 / 5); 
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #a7a7a7;
+}
+  
+.deliveryTimeSlider input, .deliveryTimeSlider label {
+    box-sizing: border-box;
+    flex: 1;
+    user-select: none;
+    cursor: pointer;
+}
+  
+.deliveryTimeSlider label {
+    display: inline-block;
+    position: relative;
+    width: 20%;
+    height: 100%;
+    user-select: none;
+}
+  
+.deliveryTimeSlider label::before {
+    content: attr(data-time-option);
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 45px);
+    font-size: 13px;
+    letter-spacing: 0.4px;
+    font-weight: 400;
+    /* white-space: nowrap; */
+    opacity: 0.85;
+    transition: all 0.15s ease-in-out;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.deliveryTimeSlider label::after {
+    content: " ";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    border: 1px solid #000;
+    background: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+  
+.deliveryTimeSlider label:hover::after {
+    transform: translate(-50%, -50%) scale(1.1);
+}
+  
+.deliveryTimeSlider input {
+    display: none;
+}
+  
+.deliveryTimeSlider input:checked + label::before {
+    font-weight: 800;
+    opacity: 1;
+}
+  
+.deliveryTimeSlider input:checked + label::after {    
+    background-color: #000;
+    border-width: 1px;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+  
+.deliveryTimePos {
+    display: block;
+    position: absolute;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    background: #000;
+    border-radius: 50%;
+    transition: all 0.15s ease-in-out;
+    transform: translate(-50%, -50%);
+    border: 2px solid #fff;
+    opacity: 0;
+    z-index: 2;
+} 
