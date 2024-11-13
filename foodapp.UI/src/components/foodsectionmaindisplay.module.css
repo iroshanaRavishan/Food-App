@@ -13,7 +13,16 @@
     position: relative;
     font-size: 18px; 
 }
-  
+
+.foodHeadingArea {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
 .heading::after {
     content: '';
     justify-content: flex-start;
@@ -34,14 +43,16 @@
     font-size: 18px; 
     text-transform: capitalize;
 }
-  
-.subHeading::after {
-    content: '';
+
+.foodHeadingArea::after {
+    content: "";
     display: block;
-    width: 100%; 
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
     height: 1px;
-    background-color: #d3d3d3; 
-    margin: 10px auto 0; 
+    background-color: #ccc;
 }
 
 .horizontalItems {
