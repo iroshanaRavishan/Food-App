@@ -1,6 +1,6 @@
 ﻿namespace foodapp.API.Model
 {
-    public class Login
+    public class UserLogin
     {
         public string? Username { get; set; }
         public string? Email { get; set; }

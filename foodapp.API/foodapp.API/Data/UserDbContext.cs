@@ -2,12 +2,12 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace foodapp.API.Context
+namespace foodapp.API.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<User>
+    public class UserDbContext : IdentityDbContext<UserModel>
     {
         // constructor
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options) { }
+        public UserDbContext(DbContextOptions<UserDbContext> options) : base(options) { }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);

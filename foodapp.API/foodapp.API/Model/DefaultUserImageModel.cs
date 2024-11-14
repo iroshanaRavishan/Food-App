@@ -2,7 +2,7 @@
 
 namespace foodapp.API.Model
 {
-    public class ImageModel
+    public class DefaultUserImageModel
     {
         public int Id { get; set; }
 

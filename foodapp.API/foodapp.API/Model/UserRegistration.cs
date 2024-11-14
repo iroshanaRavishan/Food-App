@@ -2,7 +2,7 @@
 
 namespace foodapp.API.Model
 {
-    public class UserRegistrationModel
+    public class UserRegistration
     {
         [Required]
         public string Name { get; set; }
