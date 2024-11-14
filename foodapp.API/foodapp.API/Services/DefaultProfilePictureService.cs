@@ -59,6 +59,11 @@ namespace foodapp.API.Services
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<DefaultUserImageModel>> GetAllImagesWithDataAsync()
+        {
+            return await _context.DefaultProfileImages.ToListAsync();
+        }
+
         public async Task<IEnumerable<FileContentResult>> GetAllImageFilesAsync()
         {
             var images = await _context.DefaultProfileImages.ToListAsync();

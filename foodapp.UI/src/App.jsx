@@ -31,6 +31,12 @@ function App() {
         {/* Public routes */}
         <Route path="/auth" element={ <Auth /> } />
 
+        {/* 
+          <Route path="/" element={ <Home foodData={foodData} setFoodData={setFoodData} setFoodId={setFoodId} foodId={foodId} /> } />
+          <Route path="/admin" element={<Admin/>} />
+          <Route path="/profile" element={<Profile/>} />   
+          <Route path="/FoodSection" element={<FoodSection/>} />      
+        */}
         {/* Fallback for undefined routes */}
         <Route path="*" element={
           <div>
