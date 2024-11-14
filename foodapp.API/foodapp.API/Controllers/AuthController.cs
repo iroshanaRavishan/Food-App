@@ -1,10 +1,7 @@
 ﻿using foodapp.API.Model;
+using foodapp.API.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using System.IO;
-using System.Security.Claims;
 
 namespace foodapp.API.Controllers
 {
@@ -12,163 +9,85 @@ namespace foodapp.API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly SignInManager<User> signInManager;
-        private readonly UserManager<User> userManager;
+        private readonly IAuthService authService;
 
-        public AuthController(SignInManager<User> _signInManager, UserManager<User> _userManager) 
+        public AuthController(IAuthService authService)
         {
-            signInManager = _signInManager;
-            userManager = _userManager;
+            this.authService = authService;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> RegisterUser([FromForm] UserRegistrationModel model)
+        public async Task<IActionResult> RegisterUser([FromForm] UserRegistration model)
         {
-            IdentityResult result = new();
-
             try
             {
-                User user = new User()
-                {
-                    Name = model.Name,
-                    Email = model.Email,
-                    UserName = model.UserName,
-                    CreatedDate = DateTime.UtcNow,
-                    ModifiedDate = DateTime.UtcNow
-                };
+                var result = await authService.RegisterUserAsync(model);
 
-                if (model.ProfilePicture != null)
-                {
-                    using var memoryStream = new MemoryStream();
-                    await model.ProfilePicture.CopyToAsync(memoryStream);
-                    user.ProfilePicture = memoryStream.ToArray();
-                    user.ProfilePictureContentType = model.ProfilePicture.ContentType;
-                }
-
-                result = await userManager.CreateAsync(user, model.Password);
-
-                if(!result.Succeeded)
+                if (!result.Succeeded)
                 {
                     return BadRequest(result);
                 }
-
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
-                var innerExceptionMessage = ex.InnerException?.Message;
                 return BadRequest(new
                 {
-                    message = $"Something went wrong, Please try again. {ex.Message}. Inner Exception: {innerExceptionMessage}",
+                    message = $"Something went wrong, Please try again. {ex.Message}",
                     isSuccess = false
                 });
             }
 
-            return Ok(new { message = "Registration Successfull!", result = result, isSuccess = true });
+            return Ok(new { message = "Registration Successful!", isSuccess = true });
         }
 
         [HttpPost("login")]
-        public async Task<IActionResult> LoginUser(Login login)
+        public async Task<IActionResult> LoginUser(UserLogin login)
         {
-            try
-            {
-                User user_ = await userManager.FindByEmailAsync(login.Email);
+            var (isSuccess, message) = await authService.LoginUserAsync(login);
+            if (!isSuccess)
+                return Unauthorized(new { message, isSuccess = false });
 
-                if(user_ != null)
-                {
-                    login.Username = user_.UserName;
-
-                    if (!user_.EmailConfirmed) 
-                    {
-                        user_.EmailConfirmed = true;    
-                    }
-                    //throw new InvalidOperationException("Simulated exception during password sign-in.");
-                    
-                    var result = await signInManager.PasswordSignInAsync(user_, login.Password, login.Remember, false);
-
-                    if (!result.Succeeded)
-                    {
-                        return Unauthorized(new {message = "Please check your credentials and try again!", isSuccess = true });
-                    }
-
-                    user_.LastLogin = DateTime.UtcNow;
-                    var updatedUser = await userManager.UpdateAsync(user_);
-                } else 
-                {
-                    return BadRequest(new {message = "The Email is not exists. Please check your credentials and try again!", isSuccess = false});
-                }
-               
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(new {message = "Something went wrong, Please try again! " + ex.Message, isSuccess = false});
-            }
-
-            return Ok(new { message = "Login Successfull!", isSuccess = true });
+            return Ok(new { message, isSuccess = true });
         }
 
-        [HttpGet("logout")] // need to apply autherize here, TODO
+        [HttpGet("logout"), Authorize]
         public async Task<IActionResult> LogoutUser()
         {
-            try
-            {
-                await signInManager.SignOutAsync();
-            } catch (Exception ex)
-            {
-                return BadRequest(new{message = "Something went wrong! " + ex.Message, isSuccess = false});
-            }
-
-            return Ok(new { message = "Successfully Logged out!", isSuccess = true});
-        }
-
-        [HttpGet("admin")] // need to apply autherize here, TODO
-        public async Task<IActionResult> AdminPage()
-        {
-            string[] partners = { "Doe", "john", "Smith", "Eric" };
-            return Ok(new { trustedPartners = partners, isSuccess = true});
+            await authService.LogoutUserAsync();
+            return Ok(new { message = "Successfully Logged out!", isSuccess = true });
         }
 
         [HttpGet("home/{email}"), Authorize]
         public async Task<IActionResult> LandingPage(string email)
         {
-            User user = await userManager.FindByEmailAsync(email);
-            if(user == null)
-            {
-                return BadRequest(new { message = "Something went wrong! PLease try again later." , isSuccess = false});
-            }
+            var user = await authService.GetUserByEmailAsync(email);
+            if (user == null)
+                return BadRequest(new { message = "Something went wrong! Please try again later.", isSuccess = false });
 
-            return Ok(new { user = user, isSuccess = true });
+            return Ok(new { user, isSuccess = true });
         }
 
         [HttpGet("authuser")]
         public async Task<IActionResult> CheckUser()
         {
-            User currentUser = new();
-
             try
             {
-                var user_ = HttpContext.User;
-                var principals = new ClaimsPrincipal(user_);
-                var result = signInManager.IsSignedIn(principals);
-
-                if (result)
-                {
-                    currentUser = await signInManager.UserManager.GetUserAsync(principals);
-                } else
-                {
+                var user = await authService.GetAuthenticatedUserAsync(User);
+                if (user == null)
                     return Forbid();
-                }
+
+                return Ok(new { message = "Logged In", user, isSuccess = true });
             }
             catch (Exception ex)
             {
-                return BadRequest(new{message = "Something went wrong! Plase try again. " + ex.Message, isSuccess = false });
+                return BadRequest(new { message = "Something went wrong! Please try again. " + ex.Message, isSuccess = false });
             }
-
-            return Ok(new { message = "Logged In", user = currentUser, isSuccess = true});
         }
 
         [HttpGet("profile-picture/{userId}")]
         public async Task<IActionResult> GetProfilePicture(string userId)
         {
-            var user = await userManager.FindByIdAsync(userId);
+            var user = await authService.GetProfilePictureAsync(userId);
             if (user == null || user.ProfilePicture == null)
             {
                 return NotFound();
