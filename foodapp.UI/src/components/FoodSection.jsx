@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import ImageSlider from './ImageSlider';
 import styles from './foodsection.module.css'
@@ -19,7 +19,11 @@ export default function FoodSection() {
         './src/assets/images/background-1.jpg',
         './src/assets/images/background-2.jpg',
         './src/assets/images/background-3.jpg'
-      ];
+    ];
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
 
     return (
         <div className={styles.mainContainer}>
