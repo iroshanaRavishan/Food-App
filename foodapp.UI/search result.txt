@@ -60,3 +60,42 @@
         "imageType": "jpg"
     }
 ]
+
+
+// Sample payload of a food
+{
+    "id": "ee123bac-6255-402b-b714-17b02e1d7446",
+    "category": "Burger",
+    "fellTo": [
+        "today's offer",
+        "top 10 this week"
+    ],
+    "name": "Italian Cheese Burger",
+    "quickSummary": "An Italian Cheese Burger combines a juicy beef patty with melted mozzarella, fresh basil, sun-dried tomatoes, and a drizzle of pesto sauce. Topped with arugula and a slice of prosciutto, it's all layered on a toasted ciabatta bun for a delicious Italian twist on the classic burger.",
+    "summary": "An Italian Cheese Burger combines classic burger elements with a delicious Italian twist. It features a juicy beef patty topped with melted mozzarella or provolone cheese, fresh basil leaves, sun-dried tomatoes, and a slice of prosciutto or pepperoni for extra flavor. The burger is often dressed with a tangy marinara sauce and served on a toasted ciabatta bun or focaccia for a hint of authentic Italian texture. This burger offers a savory blend of flavors with the richness of Italian cheeses, herbs, and cured meats, perfect for anyone craving a unique fusion of American and Italian cuisine",
+    "price": "870.00",
+    "aggregateLikes": "45",
+    "ingrediants": [
+        "Portobello mushroom – The primary protein base.",
+        "Mozzarella or provolone cheese – Adds a creamy, mild flavor.",
+        "Fresh basil leaves – For a hint of aromatic freshness.",
+        "Sun-dried tomatoes – Adds a tangy, slightly sweet Italian flavor.",
+        "Prosciutto or pepperoni – Cured Italian meat for an extra savory kick.",
+        "Marinara sauce – For a touch of classic Italian taste.",
+        "Ciabatta or focaccia bun – Adds a rustic texture and Italian flavor."
+    ],
+    "image": "",
+    "servings": "1",
+    "readyInMinutes": "12"
+}
+
+// if the frontend server is not working:
+net stop winnat -> net start winnat -> then access issue is fixed. remember to run in administrative mode.
+
+// adding migration and updating the DB
+Add-Migration Renamed-Default-Image-DB -context ImageDbContext
+Update-Database -Context ImageDbContext
+
+// removing from the changes file to untrack them
+git rm --cached .futdcache.v2
+git rm --cached *.bin 
