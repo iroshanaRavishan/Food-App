@@ -11,8 +11,8 @@ using foodapp.API.Data;
 namespace foodapp.API.Migrations.ImageDb
 {
     [DbContext(typeof(DefaultProfilePictureDbContext))]
-    [Migration("20240914153625_3rd")]
-    partial class _3rd
+    [Migration("20241113165947_Renamed-Default-Image-DB")]
+    partial class RenamedDefaultImageDB
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace foodapp.API.Migrations.ImageDb
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("foodapp.API.Model.ImageModel", b =>
+            modelBuilder.Entity("foodapp.API.Model.DefaultUserImageModel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -46,7 +46,7 @@ namespace foodapp.API.Migrations.ImageDb
 
                     b.HasKey("Id");
 
-                    b.ToTable("defaultProfileImages");
+                    b.ToTable("DefaultProfileImages");
                 });
 #pragma warning restore 612, 618
         }

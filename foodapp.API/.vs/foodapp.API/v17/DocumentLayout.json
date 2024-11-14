@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\controllers\\defaultprofilepicturecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\controllers\\defaultprofilepicturecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\data\\imagedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\data\\imagedbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\model\\imagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\model\\imagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\services\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\model\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\data\\userdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\data\\userdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|c:\\personal\\techs\\reactjs\\foodapplication\\foodapp.api\\foodapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1A0994A9-D370-4070-A10C-01BE7DA25786}|foodapp.API\\foodapp.API.csproj|solutionrelative:foodapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +30,71 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Program.cs",
               "RelativeDocumentMoniker": "foodapp.API\\Program.cs",
               "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Program.cs",
               "RelativeToolTip": "foodapp.API\\Program.cs",
-              "ViewState": "AQIAAAQAAAAAAAAAAAAgwA4AAAAbAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAAB0AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T15:28:16.074Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "defaultProfilePictureController.cs",
-              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Controllers\\defaultProfilePictureController.cs",
-              "RelativeDocumentMoniker": "foodapp.API\\Controllers\\defaultProfilePictureController.cs",
-              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Controllers\\defaultProfilePictureController.cs",
-              "RelativeToolTip": "foodapp.API\\Controllers\\defaultProfilePictureController.cs",
-              "ViewState": "AQIAADsAAAAAAAAAAAAAAE8AAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T15:16:17.87Z",
+              "WhenOpened": "2024-11-14T15:30:00.359Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ImageDbContext.cs",
-              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Data\\ImageDbContext.cs",
-              "RelativeDocumentMoniker": "foodapp.API\\Data\\ImageDbContext.cs",
-              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Data\\ImageDbContext.cs",
-              "RelativeToolTip": "foodapp.API\\Data\\ImageDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAsAAAA1AAAA",
+              "Title": "AuthService.cs",
+              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Services\\AuthService.cs",
+              "RelativeDocumentMoniker": "foodapp.API\\Services\\AuthService.cs",
+              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Services\\AuthService.cs",
+              "RelativeToolTip": "foodapp.API\\Services\\AuthService.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAIAwwDsAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T15:11:18.636Z",
+              "WhenOpened": "2024-11-14T15:29:09.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ImageModel.cs",
-              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Model\\ImageModel.cs",
-              "RelativeDocumentMoniker": "foodapp.API\\Model\\ImageModel.cs",
-              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Model\\ImageModel.cs",
-              "RelativeToolTip": "foodapp.API\\Model\\ImageModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAQAAAAbAAAA",
+              "DocumentIndex": 2,
+              "Title": "IAuthService.cs",
+              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Interfaces\\IAuthService.cs",
+              "RelativeDocumentMoniker": "foodapp.API\\Interfaces\\IAuthService.cs",
+              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Interfaces\\IAuthService.cs",
+              "RelativeToolTip": "foodapp.API\\Interfaces\\IAuthService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAwAAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T14:53:43.694Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Model\\User.cs",
-              "RelativeDocumentMoniker": "foodapp.API\\Model\\User.cs",
-              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Model\\User.cs",
-              "RelativeToolTip": "foodapp.API\\Model\\User.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-14T14:53:24.552Z",
+              "WhenOpened": "2024-11-14T15:27:46.432Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "UserDbContext.cs",
+              "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Data\\UserDbContext.cs",
+              "RelativeDocumentMoniker": "foodapp.API\\Data\\UserDbContext.cs",
+              "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Data\\UserDbContext.cs",
+              "RelativeToolTip": "foodapp.API\\Data\\UserDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T15:22:59.965Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "foodapp.API\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Personal\\Techs\\ReactJS\\FoodApplication\\foodapp.API\\foodapp.API\\Controllers\\AuthController.cs",
               "RelativeToolTip": "foodapp.API\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAdAAAA",
+              "ViewState": "AQIAAEYAAAAAAAAAAAA9wF8AAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-31T18:23:09.132Z",
+              "WhenOpened": "2024-11-14T15:07:19.708Z",
               "EditorCaption": ""
             }
           ]
