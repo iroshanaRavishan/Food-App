@@ -1,0 +1,123 @@
+.container {
+    display: flex;
+    height: 490px;
+    width: 250px;
+    flex-direction: column;
+    transition: box-shadow 0.3s ease;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: white;
+    box-shadow: 0 0 12px 0 rgb(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.productCard {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%; 
+    transition: box-shadow 0.3s ease;
+    max-width: 300px;
+}
+  
+.slide {
+    display: flex;
+    transition: transform 0.8s ease-in-out; 
+}
+  
+.heading {
+    padding: 10px 20px 0 20px;
+    position: relative;
+    font-size: 18px; 
+}
+  
+.heading::after {
+    content: '';
+    justify-content: flex-start;
+    display: block;
+    width: 10%; 
+    height: 4px;
+    background-color: #fcd84c; 
+    margin: 10px auto 0; 
+    border-top: 2px solid #a18102;
+    border-right: 4px solid #a18102;
+    transform: skew(40deg);
+    margin: 10px 0 0;
+}
+
+.imageContainer {
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+  
+.productImage {
+    width: auto;
+    height: 180px;
+    object-fit: cover;
+}
+  
+.productTitle {
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #333;
+    margin: 0 0 10px;
+}
+
+.cardContent {
+    text-align: center;
+    padding: 0 10px;
+}
+  
+.productDescription {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 15px;
+}
+  
+.priceContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+}
+  
+.oldPrice {
+    font-size: 0.9em;
+    color: #999;
+    text-decoration: line-through;
+    margin-right: 10px;
+}
+  
+.newPrice {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #e67e22;
+}
+
+.buttonContainer {
+    margin: 10px 10px;
+}
+
+.buttonContainer button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #fcd84c;
+    font-size: 15px;
+    padding: 10px 45px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+  

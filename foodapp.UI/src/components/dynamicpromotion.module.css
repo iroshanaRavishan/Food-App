@@ -1,0 +1,127 @@
+.container {
+    display: flex;
+    height: 530px;
+    width: 250px;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: white;
+    overflow: hidden;
+}
+
+.container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+  
+.slide {
+    display: flex;
+    transition: transform 0.8s ease-in-out; 
+}
+
+.promotionItem {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%; 
+}
+  
+.leftSection {
+    flex: 7; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px
+}
+  
+.leftSection img {
+    width: 80%;
+    height: 80%;
+}
+  
+.rightSection {
+    flex: 5; 
+    padding: 20px;
+    background-color: #f53939;
+    color: white;
+    position: relative;
+    z-index: 100;
+}
+  
+.rightSection h1 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: 'Bernard MT Condensed';
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align: center;
+}
+  
+.offer h2 {
+    color: #ffcc00;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    font-size: 40px;
+    text-align: center;
+    font-family: 'Showcard Gothic';
+    text-shadow: #ffffff;
+}
+  
+.discount {
+    font-size: 30px;
+    font-weight: bold;
+    background-color: white;
+    color: #f53939;
+    padding: 10px;
+    font-family: 'Bernard MT Condensed'; 
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto 30px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2); 
+    transform: perspective(500px) rotateX(25deg); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+  
+.discount:hover {
+    transform: perspective(500px) rotateX(0deg) translateZ(10px); 
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.4); 
+}
+  
+.orderSection {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: flex-end;
+}
+  
+.ctaText {
+    font-size: 17px;
+    font-family: 'Brush Script MT';
+}
+  
+.orderBtn {
+    background-color: #ffffff;
+    color: rgb(192, 6, 6);
+    border: none;
+    padding: 0px 8px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 900;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
+    padding: 3px 10px;
+    border: 1px solid rgb(192, 6, 6);
+}
+  
+.orderBtn:hover {
+    background-color: #eed9d9;
+    transition: all 0.3s ease, box-shadow 0.3s ease; 
+}
+ 

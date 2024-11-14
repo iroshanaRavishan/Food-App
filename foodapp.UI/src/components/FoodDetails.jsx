@@ -5,7 +5,7 @@ import ItemList from "./ItemList";
 export default function FoodDetails({foodId}){
     const [isLoading, setIsLoading] = useState(true)
     const [food, setFood] = useState({});
-    const URL =`https://api.spoonacular.com/recipes/${foodId}/information`;
+    const URL =`https://api.spoonacular.com/recipes/${foodId}/information/add`;
     const API_KEY = "fff68eceefed475780ed9e1c5a517b59";
 
     useEffect(()=>{
@@ -38,7 +38,7 @@ export default function FoodDetails({foodId}){
                 <h2>Instructions</h2>
                 <div className={styles.recipeinstructions}>
                     <ol>
-                        {isLoading ? (<p>Loading...</p>) : (food.analyzedInstructions[0].steps.map((steps)=>( <li>{steps.step}</li>)))}
+                        {isLoading ? (<p>Loading...</p>) : (food.analyzedInstructions[0].steps.map((steps, index)=>( <li key={index}>{steps.step}</li>)))}
                     </ol>
                 </div>
             </div>

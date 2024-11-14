@@ -1,0 +1,141 @@
+  .buttonWrapper   {
+    width: auto;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .inputButton {
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+    padding: 10px 30px;
+    margin: 10px 0 10px 10px;
+    transition: all 200ms;
+    color: rgb(255, 255, 255);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .confirmBtn {
+    background-color: rgb(5, 148, 12);
+  }
+
+  .closeBtn {
+    background-color: rgb(216, 38, 38);
+  }
+
+  .confirmBtn:hover {
+    background-color: rgb(4, 120, 10);
+  }
+
+  .closeBtn:hover {
+    background-color: rgb(180, 14, 14);
+  }
+
+  .markerWrapper {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-100%, -100%);
+    z-index: 10,;
+    pointer-events: none;
+    height: auto;
+  }
+
+  .markerWrapper img {
+    height: 50px;
+    width: 50px;
+  }
+
+  .pointingMessageWrapper {
+    display: flex;
+    margin-bottom: 20px;
+    position: relative; 
+    top: -100px; 
+    right: -18px;
+}
+
+  .bubble {
+    --r: 1em;  
+    --t: 2.8em; 
+    max-width: 500px;
+    padding: 1em;
+    border-inline: var(--t) solid #0000;
+    border-radius: calc(var(--r) + var(--t)) / var(--r);
+    mask: 
+      radial-gradient(100% 100% at var(--_p) 0, #0000 99%, #000 102%) 
+        var(--_p) 100% / var(--t) var(--t) no-repeat,
+      linear-gradient(#000 0 0) padding-box;
+    background: linear-gradient(135deg, #06bd15, #043308) border-box;
+    color: #fff;
+    position: relative; 
+    z-index: 1;
+    animation: fadeOut 1s 4s forwards; 
+  }
+  
+  .right {
+    --_p: 100%;
+    border-bottom-right-radius: 0 0;
+    place-self: end;
+  }
+  
+  .pointingLine {
+    position: relative;
+    width: 100px;
+    margin-top: -10px;
+    left: -26%;
+    animation: fadeOut 1s 4s forwards; 
+  }
+  
+  .pointingLine::after {
+    position: absolute;
+    top: 95%;
+    left: 100%;
+    content: '';
+    height: 50px;
+    width: 70%;
+    border-top: 3px solid #043308;
+    border-right: 4px solid #001602;
+    -webkit-transform: skew(45deg);
+    -moz-transform: skew(45deg);
+    transform: skew(40deg);
+  }
+
+  /* Adding the circle */
+  .pointingLine::before {
+    content: '';
+    position: absolute;
+    top: 175%;
+    left: 175%;
+    width: 65px;
+    height: 65px;
+    background-color: transparent; 
+    border-radius: 50%; 
+    border: 2px solid #07610e;
+    box-shadow: inset 0 0 8px #06bd15;
+    animation: rotateInsetShadow 4s linear infinite;
+  }
+
+  @keyframes rotateInsetShadow {
+    0% {
+        box-shadow: inset 0 0 2px #6ec576, inset 5px 5px 10px #07610e;
+    }
+    50% {
+        box-shadow: inset -5px -5px 10px #07610e, inset 0 0 4px #06bd15;
+    }
+    100% {
+        box-shadow: inset 0 0 4px #06bd15, inset 5px 5px 10px #07610e;
+    }
+  }
+
+  @keyframes fadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+      

@@ -1,0 +1,84 @@
+.container {
+    display: flex;
+    margin: 0px 0 30px 0;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.expandBtn {
+    font-size: 12px;
+    padding: 0 10px 10px 0;
+    text-decoration: underline;
+    cursor: pointer;
+    width: fit-content;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    width: -webkit-fill-available;
+    overflow: hidden;
+    max-width: 100%; 
+}
+
+.wrapper img:first-child {
+    transform: rotate(180deg);
+}
+  
+.itemScroller {
+    transition: all 200ms;
+    border-radius: 30px;
+    background-color: #fcd84c;;
+    cursor: pointer;
+    padding: 8px;
+    margin: 0 5px;
+}
+  
+.itemScroller:hover {
+    background-color: #a18102;
+}
+
+.itemVisibity {
+    display: none;
+}
+
+.horizontalItems {
+    display: flex;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    gap: 10px;
+    max-width: 550px;
+}
+
+.wrapItems {
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.item {
+    min-width: 110px;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: 900;
+    list-style-type: none;
+    background-color: #eee;
+    text-align: center;
+    border-radius: 8px;
+    transition: all  0.2s;
+    text-transform: capitalize;
+}
+
+.item:hover {
+    cursor: pointer;
+    background-color: #c5c5c5;
+}
+
+.activeItem {
+    text-transform: uppercase;
+    background-color: black;
+    color: white;
+}
+
+.activeItem:hover {
+    background-color: black;
+}

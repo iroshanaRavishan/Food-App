@@ -1,0 +1,62 @@
+.popupContent {
+    width: 350px;
+    min-height: 650px;
+    max-height: 600px;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: all 500ms;
+}
+
+.modalHeading {
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.subHeader {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+  
+.subHeader span {
+    margin: 10px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+  
+.subHeader::after {
+    content: '';
+    flex-grow: 1;
+    height: 1px;
+    background-color: #e4e4e4;
+}
+
+.filterContainer {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+}
+
+.resultButton {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: black;
+    color: #e4e4e4;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 0 auto;
+}
+
+.resultButton:hover {
+    background-color: rgb(53, 53, 53);
+}

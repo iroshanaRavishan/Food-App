@@ -1,0 +1,123 @@
+.header {
+  position: relative;
+  text-align: center;
+  width: auto;
+  padding-top: 50px;  
+  width: -webkit-fill-available;
+}
+
+.header::before {
+  content: 'Enjoy some extra portion';
+  display: block;
+  font-size: 16px;
+  color: #dab62a;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.header::after {
+  content: '';
+  display: block;
+  width: 10%; 
+  height: 4px;
+  background-color: #fcd84c; 
+  margin: 10px auto 0; 
+  border-top: 2px solid #a18102;
+  border-right: 4px solid #a18102;
+  -webkit-transform: skew(45deg);
+  -moz-transform: skew(45deg);
+  transform: skew(40deg);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 250px;
+  margin: 0 0 100px 0;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/images/flavoured-food-background.webp');
+  position: relative;
+}
+
+.container .sideImage {
+  height: 250px;
+  width: 400px;
+  position: absolute;
+  bottom: -400px;
+  left: 0;
+  z-index: 1;
+}
+
+.categories {
+  width: 100%;
+}
+
+.categoryRow {
+  display: grid;
+  width: 100%;
+  gap: 20px;
+  column-gap: 60px;
+  align-items: center;
+  justify-content: center;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(650px, 300px));
+}
+
+.item {
+  height: 80px;
+  width: 100%;
+  text-align: center;
+  border-radius: 10px; 
+}
+
+.menuItem {
+  display: flex;
+  align-items: flex-start;
+  padding: 10px 0;
+}
+
+.itemImage {
+  width: 100px;
+  border-radius: 50%;
+  object-fit: cover; 
+  margin-right: 15px;
+}
+
+.itemDetails {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: center;
+}
+
+.itemTitle {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #d32f2f;
+  margin: 0;
+  margin-right: 10px;
+}
+
+.dashedLine {
+  flex-grow: 1;
+  border-bottom: 1px dashed #ccc;
+  margin: 0 10px;
+}
+
+.itemPrice {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: #333;
+}
+
+.itemDescription {
+  font-size: 0.9em;
+  color: #777;
+  margin: 5px 0 0 0;
+}
