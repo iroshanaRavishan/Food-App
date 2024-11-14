@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
-using System.IO;
 using System.Threading.Tasks;
-using foodapp.API.Data;
-using foodapp.API.Model;
+using foodapp.API.Services;
+using System.Linq;
 
 namespace foodapp.API.Controllers
 {
@@ -12,41 +10,32 @@ namespace foodapp.API.Controllers
     [ApiController]
     public class DefaultProfilePictureController : ControllerBase
     {
-        private readonly DefaultProfilePictureDbContext _context;
+        private readonly IDefaultProfilePictureService _pictureService;
 
-        public DefaultProfilePictureController(DefaultProfilePictureDbContext context)
+        public DefaultProfilePictureController(IDefaultProfilePictureService pictureService)
         {
-            _context = context;
+            _pictureService = pictureService;
         }
 
         [HttpPost("upload")]
         public async Task<IActionResult> UploadImage(IFormFile file)
         {
-            if (file == null && file.Length == 0)
-                return BadRequest("No File Uploaded!");
-            using (var memoryStream = new MemoryStream())
+            try
             {
-                await file.CopyToAsync(memoryStream);
-                var image = new DefaultUserImageModel
-                {
-                    FileName = file.FileName,
-                    ContentType = file.ContentType,
-                    Data = memoryStream.ToArray()
-                };
-
-                _context.DefaultProfileImages.Add(image);
-                await _context.SaveChangesAsync();
-
-                return Ok(new { image.Id });
+                var imageId = await _pictureService.UploadImageAsync(file);
+                return Ok(new { imageId });
+            }
+            catch (ArgumentException e)
+            {
+                return BadRequest(e.Message);
             }
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetImage(int id)
         {
-            var image = await _context.DefaultProfileImages.FindAsync(id);
-
-            if(image == null)
+            var image = await _pictureService.GetImageAsync(id);
+            if (image == null)
                 return NotFound();
 
             var result = new
@@ -63,38 +52,15 @@ namespace foodapp.API.Controllers
         [HttpGet("all")]
         public async Task<IActionResult> GetAllImages()
         {
-            var images = await _context.DefaultProfileImages
-                .Select(i => new
-                {
-                    i.Id,
-                    i.FileName,
-                    i.ContentType
-                })
-                .ToListAsync();
-
-            return Ok(images);
-        }
-
-        [HttpGet("all-with-data")]
-        public async Task<IActionResult> GetAllImagesWithData()
-        {
-            var images = await _context.DefaultProfileImages.ToListAsync();
+            var images = await _pictureService.GetAllImagesAsync();
             return Ok(images);
         }
 
         [HttpGet("all-files")]
         public async Task<IActionResult> GetAllImageFiles()
         {
-            var images = await _context.DefaultProfileImages.ToListAsync();
-
-            var fileResults = images.Select(image =>
-                new FileContentResult(image.Data, image.ContentType)
-                {
-                    FileDownloadName = image.FileName
-                }).ToList();
-
+            var fileResults = await _pictureService.GetAllImageFilesAsync();
             return Ok(fileResults);
         }
-
     }
 }

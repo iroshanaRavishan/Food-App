@@ -63,6 +63,7 @@ builder.Services.AddIdentity<UserModel, IdentityRole>(options =>
 }).AddEntityFrameworkStores<UserDbContext>().AddDefaultTokenProviders();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IDefaultProfilePictureService, DefaultProfilePictureService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
