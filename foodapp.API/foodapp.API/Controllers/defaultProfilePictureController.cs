@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 using foodapp.API.Services;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace foodapp.API.Controllers
 {
@@ -53,6 +54,13 @@ namespace foodapp.API.Controllers
         public async Task<IActionResult> GetAllImages()
         {
             var images = await _pictureService.GetAllImagesAsync();
+            return Ok(images);
+        }
+
+        [HttpGet("all-with-data")]
+        public async Task<IActionResult> GetAllImagesWithData()
+        {
+            var images = await _pictureService.GetAllImagesWithDataAsync();
             return Ok(images);
         }
 

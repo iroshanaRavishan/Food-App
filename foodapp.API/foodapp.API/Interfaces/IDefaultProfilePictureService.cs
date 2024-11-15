@@ -11,6 +11,7 @@ namespace foodapp.API.Services
         Task<int> UploadImageAsync(IFormFile file);
         Task<DefaultUserImageModel> GetImageAsync(int id);
         Task<IEnumerable<DefaultUserImageModel>> GetAllImagesAsync();
+        Task<IEnumerable<DefaultUserImageModel>> GetAllImagesWithDataAsync();
         Task<IEnumerable<FileContentResult>> GetAllImageFilesAsync();
     }
 }
