@@ -20,6 +20,8 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddDbContext<UserDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddDbContext<DefaultProfilePictureDbContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddDbContext<FoodItemDbContext>(options => options.UseNpgsql(connectionString));
+
 
 // Configure authentication
 builder.Services.AddAuthentication(options =>
